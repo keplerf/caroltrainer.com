@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Carolina Almeida | Elite 1-on-1 Personal Trainer in Downtown Vancouver
+    </title>
+    <meta
+      name="description"
+      content="Carolina Almeida 1-on-1 personal training for downtown Vancouver business professionals. Optimize your fitness, maximize your time. Book your strategy session today."
+    />
+    <!-- <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script> -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "[Your Trainer Name] | Executive Fitness",
+        "image": "professional_headshot.jpg",
+        "url": "https://www.yourwebsite.com",
+        "telephone": "[Your Phone Number]",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "[Your Studio Address or General Downtown Location]",
+          "addressLocality": "Vancouver",
+          "addressRegion": "BC",
+          "postalCode": "[Your Postal Code]",
+          "addressCountry": "CA"
+        },
+        "priceRange": "$$$$",
+        "servesArea": {
+          "@type": "State",
+          "name": "Downtown Vancouver"
+        }
+      }
+    </script>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background: #0a0a0a;
+        color: #ffffff;
+        display: flex;
+        flex-direction: column;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: "Playfair Display", serif;
+      }
+
+      .hero-bg {
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d1810 100%);
+      }
+
+      .gold-gradient {
+        background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+      }
+
+      .glass-effect {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .btn-gold {
+        background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+        color: #0a0a0a;
+        font-weight: 600;
+        padding: 16px 40px;
+        border-radius: 50px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-block;
+        text-decoration: none;
+      }
+
+      .btn-gold:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+      }
+
+      .btn-outline {
+        background: transparent;
+        color: #d4af37;
+        font-weight: 600;
+        padding: 16px 40px;
+        border-radius: 50px;
+        border: 2px solid #d4af37;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-block;
+        text-decoration: none;
+      }
+
+      .btn-outline:hover {
+        background: rgba(212, 175, 55, 0.1);
+      }
+
+      input,
+      textarea {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+        padding: 14px 20px;
+        border-radius: 12px;
+        width: 100%;
+        font-family: "Inter", sans-serif;
+      }
+
+      input:focus,
+      textarea:focus {
+        outline: none;
+        border-color: #d4af37;
+      }
+
+      .stat-num {
+        font-size: 3rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .card-hover {
+        transition: transform 0.3s ease;
+      }
+
+      .card-hover:hover {
+        transform: translateY(-8px);
+      }
+    </style>
+  </head>
+  <body class="container">
+    <div id="root"></div>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-effect">
+      <div
+        class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <div class="text-2xl font-bold">
+          <span
+            style="
+              background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+            "
+            >ELITE PT</span
+          >
+        </div>
+        <div class="hidden md:flex gap-8">
+          <a href="#about" class="text-gray-300 hover:text-white">About</a>
+          <a href="#approach" class="text-gray-300 hover:text-white"
+            >Approach</a
+          >
+          <a href="#results" class="text-gray-300 hover:text-white">Results</a>
+          <a href="#contact" class="text-gray-300 hover:text-white">Contact</a>
+        </div>
+        <a href="#booking" class="btn-gold text-sm px-6 py-3"
+          >Book Intro Session</a
+        >
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen flex items-center pt-20">
+      <div class="max-w-7xl mx-auto px-6 py-12">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+              Transform Your Body.<br />
+              <span
+                style="
+                  background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+                  -webkit-background-clip: text;
+                  -webkit-text-fill-color: transparent;
+                "
+                >Elevate Your Life.</span
+              >
+            </h1>
+            <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+              Elite 1-on-1 personal training for busy professionals in downtown
+              Vancouver. Results-driven, time-efficient, transformative.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 mb-12">
+              <a href="#booking" class="btn-gold text-center"
+                >Book Free Consultation</a
+              >
+              <a href="#contact" class="btn-outline text-center"
+                >Get In Touch</a
+              >
+            </div>
+            <div class="flex gap-8">
+              <div>
+                <div class="stat-num">8+</div>
+                <p class="text-gray-400">Years Experience</p>
+              </div>
+              <div>
+                <div class="stat-num">200+</div>
+                <p class="text-gray-400">Transformations</p>
+              </div>
+              <div>
+                <div class="stat-num">100%</div>
+                <p class="text-gray-400">Committed</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <img
+              src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80"
+              alt="Professional Female Personal Trainer"
+              class="rounded-3xl shadow-2xl w-full h-auto object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-black">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold mb-4">
+            Designed For Your Lifestyle
+          </h2>
+          <p class="text-xl text-gray-400">
+            Fitness that fits the demands of your career
+          </p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="glass-effect p-8 rounded-2xl card-hover">
+            <div class="text-5xl mb-6">💼</div>
+            <h3 class="text-2xl font-bold mb-4">Business Professional Focus</h3>
+            <p class="text-gray-400">
+              I understand your time is precious. Sessions designed to maximize
+              results in minimal time, scheduled around your demanding career.
+            </p>
+          </div>
+          <div class="glass-effect p-8 rounded-2xl card-hover">
+            <div class="text-5xl mb-6">📍</div>
+            <h3 class="text-2xl font-bold mb-4">Downtown Vancouver</h3>
+            <p class="text-gray-400">
+              Conveniently located in the heart of downtown. Train before work,
+              during lunch, or after your last meeting.
+            </p>
+          </div>
+          <div class="glass-effect p-8 rounded-2xl card-hover">
+            <div class="text-5xl mb-6">🎯</div>
+            <h3 class="text-2xl font-bold mb-4">1-on-1 Exclusive</h3>
+            <p class="text-gray-400">
+              Completely personalized attention. Every session tailored to your
+              goals, body, and progress. No distractions, just results.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Approach Section -->
+    <section id="approach" class="py-24 hero-bg">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold mb-4">
+            The Elite Approach
+          </h2>
+          <p class="text-xl text-gray-400">
+            Science-backed. Results-proven. Tailored to you.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-12">
+          <div class="space-y-8">
+            <div class="flex gap-4">
+              <div
+                class="flex-shrink-0 w-12 h-12 gold-gradient rounded-full flex items-center justify-center font-bold text-xl text-black"
+              >
+                1
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold mb-2">Initial Assessment</h3>
+                <p class="text-gray-400">
+                  Comprehensive movement screening, goal setting, and lifestyle
+                  analysis to create your foundation.
+                </p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div
+                class="flex-shrink-0 w-12 h-12 gold-gradient rounded-full flex items-center justify-center font-bold text-xl text-black"
+              >
+                2
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold mb-2">
+                  Personalized Programming
+                </h3>
+                <p class="text-gray-400">
+                  Custom training plans that evolve with your progress,
+                  incorporating strength, mobility, and conditioning.
+                </p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div
+                class="flex-shrink-0 w-12 h-12 gold-gradient rounded-full flex items-center justify-center font-bold text-xl text-black"
+              >
+                3
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold mb-2">Continuous Optimization</h3>
+                <p class="text-gray-400">
+                  Regular progress tracking, technique refinement, and program
+                  adjustments to ensure sustainable results.
+                </p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div
+                class="flex-shrink-0 w-12 h-12 gold-gradient rounded-full flex items-center justify-center font-bold text-xl text-black"
+              >
+                4
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold mb-2">
+                  Fitness Programs (Existing Clients)
+                </h3>
+                <p class="text-gray-400">
+                  For committed clients, supplementary programming to support
+                  your training between sessions.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="glass-effect p-8 rounded-2xl">
+            <h3 class="text-3xl font-bold mb-6">What Sets Me Apart</h3>
+            <div class="space-y-4">
+              <div class="flex items-start gap-3">
+                <span class="text-2xl text-yellow-500">✓</span>
+                <p class="text-gray-300">
+                  8+ years specializing in busy professionals
+                </p>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-2xl text-yellow-500">✓</span>
+                <p class="text-gray-300">
+                  Certified in strength training, mobility, and injury
+                  prevention
+                </p>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-2xl text-yellow-500">✓</span>
+                <p class="text-gray-300">
+                  Focus on sustainable lifestyle integration
+                </p>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-2xl text-yellow-500">✓</span>
+                <p class="text-gray-300">
+                  Flexible scheduling to accommodate your calendar
+                </p>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-2xl text-yellow-500">✓</span>
+                <p class="text-gray-300">Accountability without judgment</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results" class="py-24 bg-black">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold mb-4">
+            Real Results, Real People
+          </h2>
+          <p class="text-xl text-gray-400">
+            Downtown professionals who transformed their lives
+          </p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="glass-effect p-8 rounded-2xl">
+            <div class="text-2xl mb-4">⭐⭐⭐⭐⭐</div>
+            <p class="text-gray-300 italic mb-6">
+              "As a CFO, I barely had time to eat, let alone work out. She
+              designed efficient 45-minute sessions that fit my schedule and
+              delivered incredible results. Down 30 lbs and stronger than ever."
+            </p>
+            <div>
+              <p class="font-bold">Michael R.</p>
+              <p class="text-gray-500 text-sm">Chief Financial Officer</p>
+            </div>
+          </div>
+          <div class="glass-effect p-8 rounded-2xl">
+            <div class="text-2xl mb-4">⭐⭐⭐⭐⭐</div>
+            <p class="text-gray-300 italic mb-6">
+              "After years of desk work and chronic back pain, I'm finally
+              pain-free and confident. The personalized attention made all the
+              difference. I actually look forward to our sessions."
+            </p>
+            <div>
+              <p class="font-bold">Jennifer L.</p>
+              <p class="text-gray-500 text-sm">Marketing Director</p>
+            </div>
+          </div>
+          <div class="glass-effect p-8 rounded-2xl">
+            <div class="text-2xl mb-4">⭐⭐⭐⭐⭐</div>
+            <p class="text-gray-300 italic mb-6">
+              "Best investment in myself. She understands the corporate
+              lifestyle and built my training around it. More energy, better
+              sleep, and visible results in just 3 months."
+            </p>
+            <div>
+              <p class="font-bold">David K.</p>
+              <p class="text-gray-500 text-sm">Tech Executive</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="py-24 hero-bg">
+      <div class="max-w-4xl mx-auto px-6">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl md:text-5xl font-bold mb-4">
+            Book Your Free Intro Session
+          </h2>
+          <p class="text-xl text-gray-400">
+            Let's discuss your goals and see if we're the right fit
+          </p>
+        </div>
+        <div class="glass-effect p-12 rounded-3xl">
+          <div class="text-center mb-8">
+            <p class="text-lg text-gray-300 mb-6">
+              Schedule a complimentary 30-minute consultation to discuss your
+              fitness goals, assess your current routine, and explore how we can
+              work together.
+            </p>
+          </div>
+
+          <div
+            class="bg-white bg-opacity-5 border-2 border-dashed border-gray-600 rounded-2xl p-12 text-center"
+          >
+            <div class="text-6xl mb-4">📅</div>
+            <h3 class="text-2xl font-bold mb-3">Google Calendar Integration</h3>
+            <p class="text-gray-400 mb-6">
+              Click below to view available time slots and book your intro
+              session
+            </p>
+            <button
+              class="btn-gold"
+              onclick="alert('Connect your Google Calendar booking link here')"
+            >
+              View Available Times
+            </button>
+            <p class="text-sm text-gray-500 mt-4">
+              Replace this section with your Google Calendar embed or booking
+              link
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-black">
+      <div class="max-w-4xl mx-auto px-6">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl md:text-5xl font-bold mb-4">Get In Touch</h2>
+          <p class="text-xl text-gray-400">
+            Ready to start your transformation? Send me a message
+          </p>
+        </div>
+        <form
+          class="glass-effect p-12 rounded-3xl"
+          onsubmit="handleSubmit(event)"
+        >
+          <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <label class="block text-sm font-medium mb-2">First Name</label>
+              <input type="text" required placeholder="John" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-2">Last Name</label>
+              <input type="text" required placeholder="Doe" />
+            </div>
+          </div>
+          <div class="mb-6">
+            <label class="block text-sm font-medium mb-2">Email</label>
+            <input type="email" required placeholder="john.doe@company.com" />
+          </div>
+          <div class="mb-6">
+            <label class="block text-sm font-medium mb-2"
+              >Phone (Optional)</label
+            >
+            <input type="tel" placeholder="+1 (604) 123-4567" />
+          </div>
+          <div class="mb-6">
+            <label class="block text-sm font-medium mb-2"
+              >What are your fitness goals?</label
+            >
+            <textarea
+              rows="5"
+              required
+              placeholder="Tell me about your current fitness level, goals, and what you're looking for in a personal trainer..."
+            ></textarea>
+          </div>
+          <button type="submit" class="btn-gold w-full text-lg">
+            Send Message
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-gray-800 py-12">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-3 gap-8 mb-8">
+          <div>
+            <h3 class="text-2xl font-bold mb-4">
+              <span
+                style="
+                  background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+                  -webkit-background-clip: text;
+                  -webkit-text-fill-color: transparent;
+                "
+                >ELITE PT</span
+              >
+            </h3>
+            <p class="text-gray-400">Transform your body. Elevate your life.</p>
+          </div>
+          <div>
+            <h4 class="font-bold mb-4">Location</h4>
+            <p class="text-gray-400">
+              Downtown Vancouver, BC<br />Serving the core business district
+            </p>
+          </div>
+          <div>
+            <h4 class="font-bold mb-4">Connect</h4>
+            <p class="text-gray-400">
+              Email: elite@training.com<br />Phone: (604) 555-0123
+            </p>
+          </div>
+        </div>
+        <div
+          class="text-center text-gray-500 text-sm pt-8 border-t border-gray-800"
+        >
+          <p>&copy; 2025 Elite Personal Training. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

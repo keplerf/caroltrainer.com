@@ -1,0 +1,8 @@
+.sidebar {
+  padding: 40px;
+  width: 30%;
+  background-color: #f5f5dc3c;
+  display: inline-block;
+  margin: 0;
+  min-height: 400px;
+}
