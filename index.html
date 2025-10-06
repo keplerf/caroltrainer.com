@@ -39,7 +39,8 @@
     <style>
       @font-face {
         font-family: "Oswald";
-        src: local("Oswald-Bold"), url("./assets/fonts/Oswald/Oswald-Bold.ttf");
+        src: local("Oswald-Bold"),
+          url("/src/assets/fonts/Oswald/static/Oswald-Bold.ttf");
       }
       body {
         font-family: "Inter", sans-serif;
@@ -283,9 +284,11 @@
         padding: 0;
         text-shadow: #1e1e1e73 1px 1px 0px;
         text-shadow: #232222f5 1px 2px 4px;
+        font-size: 18px;
+        color: #dfdfdfeb;
       }
       .logo span {
-        font-size: 12px;
+        font-size: 10px;
         font-weight: 200;
         color: #ffcc8f;
         display: block;
@@ -302,6 +305,13 @@
         color: white;
         border: 2px solid #ffcc8f;
         border-radius: 10px;
+        transition: all 0.5s;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        background: rgba(212, 175, 55, 0.1);
       }
 
       .content {
@@ -343,7 +353,9 @@
   <body>
     <nav class="nav">
       <div class="nav-container">
-        <p class="logo">Carol Almeida <span>Personal Trainer</span></p>
+        <p class="logo">
+          Carol Almeida <span>Personal Trainer / Fitness Coach</span>
+        </p>
         <p class="set">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -377,11 +389,13 @@
           <a
             href="sms:+17783029893?body=I'm%20interested%20in%20personal%20training"
             class="btn"
+            aria-label="Text Carolina Simoes about personal training anf fitnes coach"
             >+1 778 302 9893</a
           >
           <a
             href="https://wa.me/7783029893?text=I'm%20interested%20in%20personal%20training"
             class="what btn"
+            aria-label="Send a WhatsApp to Carolina Simoes about personal training anf fitnes coach"
           >
             Chat on WhatsApp
           </a>
