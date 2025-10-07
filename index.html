@@ -36,319 +36,8 @@
       }
     </script>
 
-    <style>
-      @font-face {
-        font-family: "Oswald";
-        src: local("Oswald-Bold"),
-          url("/src/assets/fonts/Oswald/static/Oswald-Bold.ttf");
-      }
-      body {
-        font-family: "Inter", sans-serif;
-        background: #d9d9d9;
-        /* display: flex;
-        flex-direction: column; */
-        padding: 0;
-        margin: 0;
-      }
-
-      .hero {
-        display: flex;
-        padding: 0 1.5rem;
-        /* flex-direction: column; */
-        min-height: 70vh;
-        left: 0px;
-        top: 0px;
-        position: relative;
-        color: #d9d9d9;
-        overflow: hidden;
-        padding-top: 80px;
-
-        @media screen and (min-width: 600px) {
-          padding: 0 3rem;
-        }
-      }
-
-      .hero-container {
-        margin: 0;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: flex-start;
-
-        @media screen and (min-width: 600px) {
-          margin: 0 auto;
-          max-width: 1600px;
-          width: 100%;
-          padding-top: 100px;
-          padding-bottom: 300px;
-        }
-      }
-
-      .hidden-sm {
-        display: none;
-
-        @media screen and (min-width: 600px) {
-          display: initial;
-        }
-      }
-
-      .hero-tag {
-        border-radius: 50%;
-        background: #e1512b;
-        padding: 5px;
-        font-size: 13px;
-        max-width: 28vw;
-        aspect-ratio: 1;
-        display: flex;
-        align-items: center;
-        position: absolute;
-        text-align: center;
-        text-shadow: #1e1e1e73 1px 1px 0px;
-        bottom: 19%;
-        box-shadow: #00000030 1px 4px 2px;
-        z-index: 50;
-
-        @media screen and (min-width: 600px) {
-          max-width: 500px;
-          padding: 13px;
-          flex-direction: column;
-          justify-content: center;
-          bottom: 64%;
-          left: 54%;
-        }
-      }
-
-      .hero::before {
-        content: "";
-        z-index: -1;
-        position: absolute;
-        width: 100%;
-        height: 180%;
-        transform: translate(-5%, 5%);
-        top: -50%;
-        left: -10%;
-        background: radial-gradient(
-          54.87% 54.87% at 44.36% 65.36%,
-          #f78948 0%,
-          #e1512b 32.69%,
-          #070000 100%
-        );
-      }
-
-      h2 {
-        font-size: 1.8em;
-        text-shadow: #1e1e1e73 1px 1px 0px;
-        line-height: 108%;
-        max-width: 70vw;
-
-        @media screen and (min-width: 600px) {
-          font-size: 3.8em;
-          width: 50%;
-        }
-      }
-
-      .hero::after {
-        content: "";
-        z-index: -2;
-        position: absolute;
-        width: 150%;
-        height: 150%;
-        transform: translate(5%, 5%);
-        top: -10%;
-        left: -10%;
-        background: #070000 100%;
-      }
-
-      .highlight {
-        color: #ffcc8f;
-      }
-
-      .hero-text {
-        position: absolute;
-        bottom: -0.5rem;
-        font-family: "Oswald", sans-serif;
-        font-optical-sizing: auto;
-        font-weight: 700;
-        font-style: normal;
-        text-transform: uppercase;
-        font-size: 13vw;
-        /* font-size: 2.6rem; */
-        line-height: 90%;
-        letter-spacing: -2px;
-        left: 0;
-        right: 0;
-        overflow: hidden;
-        width: 100%;
-
-        @media screen and (min-width: 600px) {
-          font-size: 9.5rem;
-          max-width: 1600px;
-          margin: 0 auto;
-          max-height: 300px;
-        }
-      }
-
-      .hero-text p {
-        position: relative;
-        z-index: 50;
-
-        @media screen and (min-width: 600px) {
-          z-index: 99;
-        }
-      }
-
-      .hero-text .dark {
-        color: #1e1e1e;
-        font-size: 14vw;
-        position: relative;
-        z-index: 10;
-        font-size: 2.6rem;
-
-        @media screen and (min-width: 600px) {
-          font-size: 9.5rem;
-        }
-      }
-
-      .hero-text .outline {
-        color: #1e1e1e00;
-        -webkit-text-stroke: 0.04em #1e1e1e;
-
-        @media screen and (min-width: 600px) {
-          -webkit-text-stroke: 0.02em #1e1e1e9f;
-        }
-      }
-      .small {
-        font-size: 11px;
-      }
-
-      .hero-text p {
-        margin: 0;
-      }
-
-      .hero-image {
-        width: auto;
-        position: absolute;
-        bottom: 0;
-        right: -58%;
-        height: 75%;
-        z-index: 20;
-
-        @media screen and (min-width: 600px) {
-          right: -5%;
-          height: 95%;
-          z-index: 90;
-        }
-      }
-
-      .container {
-        padding: 2rem;
-
-        @media screen and (min-width: 600px) {
-          padding: 3rem;
-          max-width: 1600px;
-          margin: 0 auto;
-          display: block;
-        }
-      }
-
-      .nav {
-        position: fixed;
-
-        color: white;
-        font-weight: bold;
-
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        z-index: 50;
-
-        right: 0;
-        left: 0;
-      }
-
-      .nav-container {
-        display: flex;
-        font-size: 13px;
-        justify-content: space-between;
-        align-items: center;
-        max-width: 1600px;
-        margin: 0 auto;
-        padding: 0.8rem 1.5rem;
-      }
-
-      .logo {
-        display: flex;
-        flex-direction: column;
-        margin: 0;
-        padding: 0;
-        text-shadow: #1e1e1e73 1px 1px 0px;
-        text-shadow: #232222f5 1px 2px 4px;
-        font-size: 18px;
-        color: #dfdfdfeb;
-      }
-      .logo span {
-        font-size: 10px;
-        font-weight: 200;
-        color: #ffcc8f;
-        display: block;
-      }
-      .icon {
-        width: 30px;
-      }
-
-      .btn {
-        text-align: center;
-        padding: 8px 15px;
-        text-decoration: none;
-        display: inline-block;
-        color: white;
-        border: 2px solid #ffcc8f;
-        border-radius: 10px;
-        transition: all 0.5s;
-      }
-
-      .btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
-        background: rgba(212, 175, 55, 0.1);
-      }
-
-      .content {
-        padding: 10px 0;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-
-        @media screen and (min-width: 600px) {
-          flex-direction: row;
-          width: 50%;
-          gap: 15px;
-        }
-      }
-
-      .what {
-        display: flex;
-        gap: 5px;
-        align-items: center;
-      }
-
-      .what svg {
-        width: 30px;
-        height: 30px;
-      }
-
-      .set {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        font-size: 11px;
-        font-weight: 300;
-        opacity: 0.5;
-        color: #d9d9d9;
-      }
-    </style>
+    <style></style>
+    <link rel="stylesheet" href="/src/index.scss" />
   </head>
   <body>
     <nav class="nav">
@@ -381,7 +70,7 @@
           <span class="hidden-sm"> Fitness Couch</span> +20 years of experience
         </h1>
 
-        <h2>
+        <h2 class="h2">
           Transform <span class="highlight">Your Life </span>with Customized
           1-on-1 <span class="highlight">Personal Training</span>.
         </h2>
@@ -400,17 +89,30 @@
             Chat on WhatsApp
           </a>
         </div>
-        <img
-          loading="lazy"
-          alt="Personal Trainer Carolina Almeida"
-          class="hero-image"
-          src="/src/assets/images/carol-almeida-personal-trainer-large-BMYEoKfR.png"
-          srcset="
-            /src/assets/images/carol-almeida-personal-trainer-small.png           400w,
-            /src/assets/images/carol-almeida-personal-trainer-small.png           800w,
-            /src/assets/images/carol-almeida-personal-trainer-large-BMYEoKfR.png 1600w
-          "
-        />
+        <picture class="hero-image">
+          <source
+            srcset="
+              /src/assets/images/carol-almeida-personal-trainer-large-BMYEoKfR.webp
+            "
+            type="image/webp"
+          />
+          <source
+            srcset="
+              /src/assets/images/carol-almeida-personal-trainer-large-BMYEoKfR.jpg
+            "
+            type="image/jpeg"
+          />
+          <img
+            fetchpriority="high"
+            alt="Personal Trainer Carolina Almeida"
+            src="/src/assets/images/carol-almeida-personal-trainer-large-BMYEoKfR.png"
+            srcset="
+              /src/assets/images/carol-almeida-personal-trainer-small.png           400w,
+              /src/assets/images/carol-almeida-personal-trainer-small.png           800w,
+              /src/assets/images/carol-almeida-personal-trainer-large-BMYEoKfR.png 1600w
+            "
+          />
+        </picture>
       </div>
 
       <div class="hero-text">
@@ -424,6 +126,13 @@
         needs and limitations.<br />
         Prioritize your health, build confidence, and live life to the fullest.
       </h3>
+      <p>
+        Transform your fitness journey with personalized training sessions
+        designed just for you! Our tailored workouts ensure efficient progress,
+        and our meticulous progress tracking keeps you on the path to success.
+        Ready to take the first step? Schedule your free consultation now and
+        let's achieve your fitness goals together.
+      </p>
     </section>
 
     <!-- <script type="module" src="/src/main.jsx"></script> -->
