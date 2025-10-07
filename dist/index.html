@@ -37,7 +37,7 @@
     </script>
 
     <style></style>
-    <link rel="stylesheet" crossorigin href="/assets/index-Bssn-vHt.css">
+    <link rel="stylesheet" crossorigin href="/assets/index-G6HN8Adw.css">
   </head>
   <body>
     <nav class="nav">
@@ -125,8 +125,147 @@
         Ready to take the first step? Schedule your free consultation now and
         let's achieve your fitness goals together.
       </p>
+
+      <h2>About Me – Carol Almeida</h2>
+
+      <p>
+        Hi, I'm Carol Almeida, a results-driven personal trainer with over 20
+        years of experience helping people transform their lives through
+        fitness. I specialize in 1-on-1 personal training and customized fitness
+        programs for individuals who value their time and want real, lasting
+        results.
+      </p>
+
+      <p>
+        My approach combines deep expertise with genuine care. Every client is
+        unique, so I design programs around your goals, fitness level, mobility,
+        and lifestyle—ensuring that you not only look better but also move,
+        feel, and live better.
+      </p>
+
+      <p>
+        I hold a Master's in Sport Training and a Bachelor's in Physical
+        Education, and I'm an ACE Certified Personal Trainer and Fitness
+        Nutrition Specialist. With certifications in CrossFit Level 1, Olympic
+        Weightlifting, and years of experience coaching both in-person and
+        online, I blend science with proven coaching strategies to deliver
+        measurable, lasting change.
+      </p>
+
+      <h2>Expertise & Specialties</h2>
+      <ul>
+        <li>1-on-1 Personal Training</li>
+        <li>Customized Fitness Programming</li>
+        <li>Weight Loss & Body Composition</li>
+        <li>Strength & Conditioning</li>
+
+        <li>Exercise Selection & Modification for Aging Athletes</li>
+
+        <li>Mobility & Movement Quality</li>
+
+        <li>Nutrition Guidance for Performance & Longevity</li>
+      </ul>
+
+      <div class="faq">
+        <div class="faq__title">
+          <h3 class="title">FAQs</h3>
+        </div>
+        <div class="faq__content">
+          <div class="faq__dropdown">
+            <button class="faq__btn">
+              <div>Do I need to be in shape before I start?</div>
+              <div class="faq__icon">
+                <img
+                  src="./assets/images/icon-plus.svg"
+                  alt=""
+                  class="plus-icon btn-icon"
+                  style="display: block"
+                />
+                <img
+                  src="./assets/images/icon-minus.svg"
+                  alt=""
+                  class="minus-icon btn-icon"
+                  style="display: none"
+                />
+              </div>
+            </button>
+            <div class="faq__body" style="">
+              <p>
+                Not at all! My job is to help you get in shape safely and
+                effectively, no matter where you’re starting from. Every
+                exercise and intensity level will be tailored to your ability so
+                you can progress confidently.
+              </p>
+            </div>
+          </div>
+          <div class="faq__dropdown">
+            <button class="faq__btn">
+              <div>What happens in the first session?</div>
+              <div class="faq__icon">
+                <img
+                  src="./assets/images/icon-plus.svg"
+                  alt=""
+                  class="plus-icon btn-icon"
+                  style="display: block"
+                />
+                <img
+                  src="./assets/images/icon-minus.svg"
+                  alt=""
+                  class="minus-icon btn-icon"
+                  style="display: none"
+                />
+              </div>
+            </button>
+            <div class="faq__body">
+              <p>
+                The first session is all about you. We’ll start with a
+                conversation about your goals, fitness history, and any injuries
+                or limitations. Then I’ll guide you through a few simple
+                movement assessments to see how your body moves. You’ll finish
+                the session with a customized workout and a clear plan forward
+                based on your needs.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- <script type="module" src="/src/main.jsx"></script> -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const faqButtons = document.querySelectorAll(".faq__btn");
+
+        faqButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            const faqBody = this.nextElementSibling;
+            const plusIcon = this.querySelector(".plus-icon");
+            const minusIcon = this.querySelector(".minus-icon");
+
+            document.querySelectorAll(".faq__body").forEach((body) => {
+              if (body !== faqBody) {
+                body.style.maxHeight = null;
+                body.previousElementSibling.querySelector(
+                  ".plus-icon"
+                ).style.display = "block";
+                body.previousElementSibling.querySelector(
+                  ".minus-icon"
+                ).style.display = "none";
+              }
+            });
+
+            if (faqBody.style.maxHeight) {
+              faqBody.style.maxHeight = null;
+              plusIcon.style.display = "block";
+              minusIcon.style.display = "none";
+            } else {
+              faqBody.style.maxHeight = faqBody.scrollHeight + "px";
+              plusIcon.style.display = "none";
+              minusIcon.style.display = "block";
+            }
+          });
+        });
+      });
+    </script>
   </body>
 </html>
