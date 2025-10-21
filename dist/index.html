@@ -29,15 +29,22 @@
           "addressCountry": "CA"
         },
         "priceRange": "100$-300$",
-        "servesArea": {
-          "@type": "State",
+        "areaServed": {
+          "@type": "GeoCircle",
+          "geoMidpoint": {
+            "@type": "GeoCoordinates",
+            "latitude": 49.2827813,
+            "longitude": -123.120885
+          },
+          "geoRadius": 16,
           "name": "Downtown Vancouver"
         }
       }
     </script>
 
     <style></style>
-    <link rel="stylesheet" crossorigin href="/assets/index-G6HN8Adw.css">
+    <script type="module" crossorigin src="/assets/index-Bj7t5bll.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DRYbEgqJ.css">
   </head>
   <body>
     <nav class="nav">
@@ -126,7 +133,7 @@
         let's achieve your fitness goals together.
       </p>
 
-      <h2>About Me – Carol Almeida</h2>
+      <h2>About Me - Carol Almeida</h2>
 
       <p>
         Hi, I'm Carol Almeida, a results-driven personal trainer with over 20
@@ -158,11 +165,8 @@
         <li>Customized Fitness Programming</li>
         <li>Weight Loss & Body Composition</li>
         <li>Strength & Conditioning</li>
-
         <li>Exercise Selection & Modification for Aging Athletes</li>
-
         <li>Mobility & Movement Quality</li>
-
         <li>Nutrition Guidance for Performance & Longevity</li>
       </ul>
 
@@ -170,11 +174,11 @@
         <div class="faq__title">
           <h3 class="title">FAQs</h3>
         </div>
-        <div class="faq__content">
-          <div class="faq__dropdown">
-            <button class="faq__btn">
-              <div>Do I need to be in shape before I start?</div>
-              <div class="faq__icon">
+        <section class="faq__content">
+          <details class="faq__dropdown">
+            <summary class="faq__btn">
+              <h4>Are personal trainers worth it?</h4>
+              <span class="faq__icon">
                 <img
                   src="./assets/images/icon-plus.svg"
                   alt=""
@@ -187,20 +191,77 @@
                   class="minus-icon btn-icon"
                   style="display: none"
                 />
-              </div>
-            </button>
-            <div class="faq__body" style="">
+              </span>
+            </summary>
+            <main class="faq__body">
+              <p>
+                Absolutely. A personal trainer helps you get results faster,
+                safer, and with more consistency than trying to figure it all
+                out alone. With over 20 years of experience, I've seen how
+                personalized programs, accountability, and proper technique can
+                completely change someone's confidence, energy, and quality of
+                life. It's not just about workouts — it's about learning how to
+                move better and feel stronger for life.
+              </p>
+            </main>
+          </details>
+          <details class="faq__dropdown">
+            <summary class="faq__btn">
+              <h4>Do you work with beginners?</h4>
+              <span class="faq__icon">
+                <img
+                  src="./assets/images/icon-plus.svg"
+                  alt=""
+                  class="plus-icon btn-icon"
+                  style="display: block"
+                />
+                <img
+                  src="./assets/images/icon-minus.svg"
+                  alt=""
+                  class="minus-icon btn-icon"
+                  style="display: none"
+                />
+              </span>
+            </summary>
+            <main class="faq__body">
+              <p>
+                Yes — many of my clients are beginners or coming back to fitness
+                after a break. Every plan starts at your current level and
+                progresses safely to help you build strength, confidence, and
+                consistency.
+              </p>
+            </main>
+          </details>
+          <details class="faq__dropdown">
+            <summary class="faq__btn">
+              <h4>Do I need to be in shape before I start?</h4>
+              <span class="faq__icon">
+                <img
+                  src="./assets/images/icon-plus.svg"
+                  alt=""
+                  class="plus-icon btn-icon"
+                  style="display: block"
+                />
+                <img
+                  src="./assets/images/icon-minus.svg"
+                  alt=""
+                  class="minus-icon btn-icon"
+                  style="display: none"
+                />
+              </span>
+            </summary>
+            <main class="faq__body">
               <p>
                 Not at all! My job is to help you get in shape safely and
-                effectively, no matter where you’re starting from. Every
+                effectively, no matter where you're starting from. Every
                 exercise and intensity level will be tailored to your ability so
                 you can progress confidently.
               </p>
-            </div>
-          </div>
-          <div class="faq__dropdown">
-            <button class="faq__btn">
-              <div>What happens in the first session?</div>
+            </main>
+          </details>
+          <details class="faq__dropdown">
+            <summary class="faq__btn">
+              <h4>What Information Does a Fitness Assessment Provide?</h4>
               <div class="faq__icon">
                 <img
                   src="./assets/images/icon-plus.svg"
@@ -215,23 +276,144 @@
                   style="display: none"
                 />
               </div>
-            </button>
-            <div class="faq__body">
+            </summary>
+            <main class="faq__body">
               <p>
-                The first session is all about you. We’ll start with a
+                Before starting any training program, it's important to
+                understand where you are right now. That's what a fitness
+                assessment is for! It gives a clear picture of your current
+                health and fitness level — including things like heart rate,
+                blood pressure, height, weight, and simple movement or strength
+                tests.
+              </p>
+              <p>
+                Your personal trainer Carol will also chat with you about your
+                workout history, goals, and what you actually enjoy doing (and
+                what you don't!). With this information, Carol can build a safe,
+                effective, and personalized plan that helps you move better,
+                feel stronger, and reach your goals faster — all while making
+                fitness something you look forward to.
+              </p>
+            </main>
+          </details>
+          <details class="faq__dropdown">
+            <summary class="faq__btn">
+              <h4>What happens in the first session?</h4>
+              <div class="faq__icon">
+                <img
+                  src="./assets/images/icon-plus.svg"
+                  alt=""
+                  class="plus-icon btn-icon"
+                  style="display: block"
+                />
+                <img
+                  src="./assets/images/icon-minus.svg"
+                  alt=""
+                  class="minus-icon btn-icon"
+                  style="display: none"
+                />
+              </div>
+            </summary>
+            <main class="faq__body">
+              <p>
+                The first session is all about you. We'll start with a
                 conversation about your goals, fitness history, and any injuries
-                or limitations. Then I’ll guide you through a few simple
-                movement assessments to see how your body moves. You’ll finish
+                or limitations. Then I'll guide you through a few simple
+                movement assessments to see how your body moves. You'll finish
                 the session with a customized workout and a clear plan forward
                 based on your needs.
               </p>
-            </div>
-          </div>
-        </div>
+            </main>
+          </details>
+          <details class="faq__dropdown">
+            <summary class="faq__btn">
+              <h4>How often should I train with you?</h4>
+              <div class="faq__icon">
+                <img
+                  src="./assets/images/icon-plus.svg"
+                  alt=""
+                  class="plus-icon btn-icon"
+                  style="display: block"
+                />
+                <img
+                  src="./assets/images/icon-minus.svg"
+                  alt=""
+                  class="minus-icon btn-icon"
+                  style="display: none"
+                />
+              </div>
+            </summary>
+            <main class="faq__body">
+              <p>
+                That depends on your goals and schedule. Many clients start with
+                1-3 sessions per week and complement those with their own
+                workouts using the customized plan I create for them. The key is
+                consistency, not perfection.
+              </p>
+            </main>
+          </details>
+          <details class="faq__dropdown">
+            <summary class="faq__btn">
+              <h4>What if I have an injury or physical limitation?</h4>
+              <div class="faq__icon">
+                <img
+                  src="./assets/images/icon-plus.svg"
+                  alt=""
+                  class="plus-icon btn-icon"
+                  style="display: block"
+                />
+                <img
+                  src="./assets/images/icon-minus.svg"
+                  alt=""
+                  class="minus-icon btn-icon"
+                  style="display: none"
+                />
+              </div>
+            </summary>
+            <main class="faq__body">
+              <p>
+                That's very common—and something I specialize in. With over 20
+                years of experience, I know how to safely modify movements to
+                work around injuries while improving your strength and mobility
+                over time.
+              </p>
+            </main>
+          </details>
+          <details class="faq__dropdown">
+            <summary class="faq__btn">
+              <h4>What makes training with you different?</h4>
+              <div class="faq__icon">
+                <img
+                  src="./assets/images/icon-plus.svg"
+                  alt=""
+                  class="plus-icon btn-icon"
+                  style="display: block"
+                />
+                <img
+                  src="./assets/images/icon-minus.svg"
+                  alt=""
+                  class="minus-icon btn-icon"
+                  style="display: none"
+                />
+              </div>
+            </summary>
+            <main class="faq__body">
+              <p>
+                I take a personalized, science-based approach. Every session and
+                program is built around your unique goals, mobility, and
+                limitations. My focus isn't just on quick results—it's on
+                helping you build strength, confidence, and better movement for
+                life.
+              </p>
+            </main>
+          </details>
+        </section>
       </div>
     </section>
+    <div id="root"></div>
 
     <!-- <script type="module" src="/src/main.jsx"></script> -->
+
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         const faqButtons = document.querySelectorAll(".faq__btn");
