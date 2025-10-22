@@ -63,6 +63,13 @@
       }
       .nav .nav-overlay-links {
         display: none;
+
+        @media screen and (min-width: 600px) {
+          display: inline-block;
+          width: auto;
+          display: flex;
+          gap: 15px;
+        }
       }
       .nav.active .nav-overlay-links {
         display: block;
@@ -71,6 +78,18 @@
         margin: 0;
         height: calc(100vh - var(--nav-heigh));
         padding: 35px;
+        width: 100%;
+
+        @media screen and (min-width: 600px) {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+        }
+      }
+      .nav.active .nav-container {
+        flex-direction: column;
       }
       .nav-overlay-links li {
         list-style: none;
@@ -80,6 +99,43 @@
       .nav-overlay-links a {
         color: rgb(226, 226, 226);
         font-size: 23px;
+        position: relative;
+        transition: all 0.5s;
+
+        @media screen and (min-width: 600px) {
+          font-size: 15px;
+        }
+      }
+
+      .nav-overlay-links a:hover {
+        color: rgb(225, 81, 43);
+      }
+
+      .nav-overlay-links a::after {
+        content: "";
+        display: block;
+        height: 3px;
+        background: #2a7b9b;
+        background: linear-gradient(
+          90deg,
+          rgb(255, 204, 143) 0%,
+
+          rgb(225, 81, 43) 100%
+        );
+        width: 100%;
+        position: absolute;
+        bottom: -5px;
+        opacity: 0.2;
+      }
+
+      .nav-overlay-links a:hover::after {
+        opacity: 1;
+      }
+
+      .nav-overlay-menutriger {
+        @media screen and (min-width: 600px) {
+          display: none;
+        }
       }
 
       .nav.active .nav-overlay-menutriger {
@@ -87,6 +143,10 @@
         top: 20px;
         right: 20px;
         z-index: 85;
+
+        @media screen and (min-width: 600px) {
+          display: none;
+        }
       }
       .nav-overlay-menutriger button {
         background: none;
@@ -110,6 +170,203 @@
       .nav .close {
         display: none;
       }
+
+      .hero {
+        display: flex;
+        padding: 0 1.5rem;
+        min-height: 70vh;
+        left: 0px;
+        top: 0px;
+        position: relative;
+        color: rgb(217, 217, 217);
+        overflow: hidden;
+        padding-top: 80px;
+        background: #070000;
+
+        @media screen and (min-width: 600px) {
+          padding: 0 3rem;
+        }
+      }
+
+      .hero-container {
+        margin: 0;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 100%;
+
+        @media screen and (min-width: 600px) {
+          margin: 0 auto;
+          max-width: 1600px;
+          width: 100%;
+          padding-top: 100px;
+          padding-bottom: 300px;
+        }
+      }
+      .hero-tag {
+        border-radius: 50%;
+        background: #e1512b;
+        padding: 5px;
+        font-size: 11px;
+        max-width: 28vw;
+        aspect-ratio: 1;
+        display: flex;
+        align-items: center;
+        position: absolute;
+        text-align: center;
+        text-shadow: #1e1e1e73 1px 1px 0px;
+        bottom: 19%;
+        box-shadow: #00000030 1px 4px 2px;
+        z-index: 50;
+
+        @media screen and (min-width: 600px) {
+          max-width: 500px;
+          padding: 13px;
+          flex-direction: column;
+          justify-content: center;
+          bottom: 64%;
+          left: 54%;
+        }
+      }
+
+      .hero::before {
+        content: "";
+        z-index: -0;
+        position: absolute;
+        width: 100%;
+        height: 180%;
+        transform: translate(-5%, 5%);
+        top: -50%;
+        left: -10%;
+        background: radial-gradient(
+          54.87% 54.87% at 44.36% 65.36%,
+          #f78948 0%,
+          #e1512b 32.69%,
+          #070000 100%
+        );
+      }
+
+      .hero::after {
+        content: "";
+        z-index: -2;
+        position: absolute;
+        width: 150%;
+        height: 150%;
+        transform: translate(5%, 5%);
+        top: -10%;
+        left: -10%;
+        background: #070000 100%;
+      }
+      .hero-text {
+        position: absolute;
+        bottom: -0.1rem;
+        font-family: "Oswald", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 700;
+        font-style: normal;
+        text-transform: uppercase;
+        font-size: 13vw;
+        line-height: 90%;
+        letter-spacing: -2px;
+        left: 0;
+        right: 0;
+        overflow: hidden;
+        width: 100%;
+
+        @media screen and (min-width: 600px) {
+          font-size: 9.5vmax;
+          max-width: 1600px;
+          margin: 0 auto;
+          max-height: 300px;
+        }
+      }
+
+      .hero-text p {
+        position: relative;
+        z-index: 50;
+
+        @media screen and (min-width: 600px) {
+          z-index: 99;
+        }
+      }
+
+      .hero-text .dark {
+        color: #1e1e1e;
+        font-size: 14vw;
+        position: relative;
+        z-index: 10;
+        font-size: 2.6rem;
+
+        @media screen and (min-width: 600px) {
+          font-size: 9.5rem;
+        }
+      }
+
+      .hero-text .outline {
+        color: #1e1e1e00;
+        -webkit-text-stroke: 0.04em #1e1e1e;
+
+        @media screen and (min-width: 600px) {
+          -webkit-text-stroke: 0.02em #1e1e1e9f;
+        }
+      }
+      hero-text p {
+        margin: 0;
+      }
+
+      .hero-image {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        right: -35%;
+        height: 75%;
+        z-index: 20;
+
+        @media screen and (min-width: 600px) {
+          right: -5%;
+          height: 95%;
+          z-index: 90;
+          width: auto;
+        }
+      }
+
+      .hero-image img {
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+      }
+
+      .nav {
+        --_bg: rgba(255, 255, 255, 0.05);
+
+        position: fixed;
+        color: white;
+        font-weight: bold;
+        background: var(--_bg);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        z-index: 51;
+        right: -1px;
+        left: -1px;
+        top: -1px;
+        transition: background-color 1s;
+
+        &.sticking {
+          --_bg: rgba(24, 23, 23, 0.735);
+        }
+      }
+
+      .nav-container {
+        display: flex;
+        font-size: 13px;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: 0.8rem 1.5rem;
+      }
     </style>
     <link rel="stylesheet" href="/src/css/index.scss" />
   </head>
@@ -119,6 +376,15 @@
         <p class="logo">
           Carol Almeida <span>Personal Trainer / Fitness Coach</span>
         </p>
+        <ul class="nav-overlay-links" role="none">
+          <li>
+            <a href="#personal-training-dowtown-vancouver" role="button"
+              >Personal Trainer</a
+            >
+          </li>
+          <!-- <li><a href="#" role="button">Fitness Programs</a></li> -->
+          <li><a href="#about-carolina-almeida" role="button">About</a></li>
+        </ul>
         <p class="set">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -141,15 +407,6 @@
           </button>
         </div>
       </div>
-      <ul class="nav-overlay-links" role="none">
-        <li>
-          <a href="#personal-training-dowtown-vancouve" role="button"
-            >Personal Trainer</a
-          >
-        </li>
-        <!-- <li><a href="#" role="button">Fitness Programs</a></li> -->
-        <li><a href="#about-carolina-almeida" role="button">About</a></li>
-      </ul>
 
       <div class="nav-overlay"></div>
     </nav>
@@ -262,16 +519,19 @@
         <li>Mobility & Movement Quality</li>
         <li>Nutrition Guidance for Performance & Longevity</li>
       </ul>
-      <h2 id="personal-training-dowtown-vancouver">
-        Personal Training Services
-      </h2>
-      <p>
-        Whether your goal is weight loss, improved performance, or simply
-        feeling great again, every session is tailored to your needs — combining
-        expert coaching, accountability, and motivation. Train in person in
-        Vancouver or with online support that fits your schedule.
-      </p>
-      <h3>Move better. Feel stronger. Live fully.</h3>
+
+      <article class="section">
+        <h2 id="personal-training-dowtown-vancouver">
+          Personal Training Services
+        </h2>
+        <p>
+          Whether your goal is weight loss, improved performance, or simply
+          feeling great again, every session is tailored to your needs —
+          combining expert coaching, accountability, and motivation. Train in
+          person in Vancouver or with online support that fits your schedule.
+        </p>
+        <h3>Move better. Feel stronger. Live fully.</h3>
+      </article>
 
       <div id="root"></div>
     </section>
@@ -303,7 +563,7 @@
           (entries) => {
             nav.classList.toggle("sticking", !entries[0].isIntersecting);
           },
-          { rootMargin: "50% 0px 0px 0px" }
+          { rootMargin: "100px 0px 0px 0px" }
         );
         navObserver.observe(scrollWatcher);
       });
