@@ -1,5 +1,5 @@
 import parse from "html-react-parser";
-import styles from "./FAQ.module.scss";
+// import styles from "./FAQ.module.scss";
 import { useEffect } from "react";
 
 const FAQ = ({ data }) => {
@@ -8,10 +8,10 @@ const FAQ = ({ data }) => {
   }, []);
 
   return (
-    <section className={styles.faq}>
+    <section className="faq">
       {data.map((item) => (
-        <details key={item.id} className={styles.faq__dropdown}>
-          <summary className={styles.faq__btn}>
+        <details key={item.id} className="faq__dropdown">
+          <summary className="faq__btn">
             <h4>{item.question}</h4>
             {/* <div className="faq__icon">
               <img
@@ -26,7 +26,7 @@ const FAQ = ({ data }) => {
               />
             </div> */}
           </summary>
-          <main className={styles.faq__body}>{parse(item.answer)}</main>
+          <main className="faq__body">{parse(item.answer)}</main>
         </details>
       ))}
     </section>

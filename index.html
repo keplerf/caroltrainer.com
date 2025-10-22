@@ -42,7 +42,75 @@
       }
     </script>
 
-    <style></style>
+    <style>
+      :root {
+        --nav-heigh: 70px;
+      }
+
+      .nav.active .nav-overlay {
+        background: #131313f4;
+        padding: 1rem 0;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 80;
+        max-width: 1024px;
+        left: 0;
+        transition: height 0.5s;
+      }
+      .nav .nav-overlay-links {
+        display: none;
+      }
+      .nav.active .nav-overlay-links {
+        display: block;
+        z-index: 90;
+        position: relative;
+        margin: 0;
+        height: calc(100vh - var(--nav-heigh));
+        padding: 35px;
+      }
+      .nav-overlay-links li {
+        list-style: none;
+        margin-inline: 0;
+        margin-block: 25px;
+      }
+      .nav-overlay-links a {
+        color: rgb(226, 226, 226);
+        font-size: 23px;
+      }
+
+      .nav.active .nav-overlay-menutriger {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 85;
+      }
+      .nav-overlay-menutriger button {
+        background: none;
+        color: aliceblue;
+        font-size: 16px;
+        line-height: 15px;
+        display: inline-block;
+        width: 35px;
+        aspect-ratio: 1;
+        padding: 5px;
+      }
+      .nav-overlay-menutriger button .open {
+        font-size: 35px;
+        vertical-align: text-top;
+      }
+      .nav .open,
+      .nav.active .close {
+        display: inline-block;
+      }
+      .nav.active .open,
+      .nav .close {
+        display: none;
+      }
+    </style>
     <link rel="stylesheet" href="/src/css/index.scss" />
   </head>
   <body>
@@ -67,8 +135,25 @@
           </svg>
           <span>Downtown Vancouver</span>
         </p>
+        <div class="nav-overlay-menutriger">
+          <button>
+            <span class="close"> X </span> <span class="open"> = </span>
+          </button>
+        </div>
       </div>
+      <ul class="nav-overlay-links" role="none">
+        <li>
+          <a href="#personal-training-dowtown-vancouve" role="button"
+            >Personal Trainer</a
+          >
+        </li>
+        <!-- <li><a href="#" role="button">Fitness Programs</a></li> -->
+        <li><a href="#about-carolina-almeida" role="button">About</a></li>
+      </ul>
+
+      <div class="nav-overlay"></div>
     </nav>
+
     <section class="hero">
       <div class="hero-container">
         <h1 class="hero-tag">
@@ -141,7 +226,7 @@
         let's achieve your fitness goals together.
       </p>
 
-      <h2>About Me - Carol Almeida</h2>
+      <h2 id="about-carolina-almeida">About Me - Carol Almeida</h2>
 
       <p>
         Hi, I'm Carol Almeida, a results-driven personal trainer with over 20
@@ -177,11 +262,52 @@
         <li>Mobility & Movement Quality</li>
         <li>Nutrition Guidance for Performance & Longevity</li>
       </ul>
+      <h2 id="personal-training-dowtown-vancouver">
+        Personal Training Services
+      </h2>
+      <p>
+        Whether your goal is weight loss, improved performance, or simply
+        feeling great again, every session is tailored to your needs — combining
+        expert coaching, accountability, and motivation. Train in person in
+        Vancouver or with online support that fits your schedule.
+      </p>
+      <h3>Move better. Feel stronger. Live fully.</h3>
 
       <div id="root"></div>
     </section>
 
     <!-- <script type="module" src="/src/main.jsx"></script> -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const nav = document.querySelector(".nav");
+        const navlinks = document.querySelectorAll(".nav-overlay-links a");
+        const navtrigger = document.querySelector(
+          ".nav-overlay-menutriger button"
+        );
+        const scrollWatcher = document.createElement("div");
+
+        navtrigger.addEventListener("click", function () {
+          nav.classList.toggle("active");
+          navtrigger.innerHTML("navtrig");
+        });
+
+        navlinks.forEach((navlink) => {
+          navlink.addEventListener("click", function () {
+            nav.classList.remove("active");
+          });
+        });
+
+        scrollWatcher.setAttribute("data-scroll-watcher", "");
+        nav.before(scrollWatcher);
+        const navObserver = new IntersectionObserver(
+          (entries) => {
+            nav.classList.toggle("sticking", !entries[0].isIntersecting);
+          },
+          { rootMargin: "50% 0px 0px 0px" }
+        );
+        navObserver.observe(scrollWatcher);
+      });
+    </script>
 
     <!-- <script>
       document.addEventListener("DOMContentLoaded", function () {

@@ -36,8 +36,8 @@
   display: none;
 }
 .faq__body {
-  overflow: hidden;
-  max-height: 0;
+  // overflow: hidden;
+  // max-height: 0;
   transition: max-height 200ms ease;
 }
 .faq__body p {
