@@ -1,19 +1,19 @@
-import { useState } from "react";
+import { useState, Suspense, lazy } from "react";
 
 import FAQ from "./components/FAQ";
 import { faq } from "./content/faq";
+
+const Footer = lazy(() => import("./components/Footer"));
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
-      <div class="faq">
-        <div class="faq__title">
-          <h3 class="title">FAQs</h3>
-        </div>
-        <FAQ data={faq} />
-      </div>
+      <FAQ data={faq} />
+      <Suspense>
+        <Footer />
+      </Suspense>
     </>
   );
 }

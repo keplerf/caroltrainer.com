@@ -1,5 +1,57 @@
 .footer {
-  background-color: #e2eded37;
+  background-color: #1e1e1e;
   padding: 30px;
-  display: block;
+}
+.footerContainer {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+  color: aliceblue;
+
+  @media screen and (min-width: 600px) {
+    display: grid;
+    padding: 0 3rem;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+
+    div:first-child {
+      grid-column: 1 / span 2;
+    }
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    list-style: none;
+    margin: 0;
+  }
+  a {
+    padding: 0.5rem 0;
+    display: block;
+  }
+}
+.social {
+  display: flex;
+  gap: 2rem;
+}
+
+.credit {
+  width: 100%;
+  grid-column: 1/-1;
+  font-size: 11px;
+  padding-top: 1rem;
+  margin-top: 1rem;
+  border-top: solid 1px rgba(239, 239, 239, 0.194);
+}
+
+.footerLogo h3 {
+  margin-bottom: 0;
+  font-size: 1.2rem;
+}
+.footerLogo p {
+  margin: 0;
+  font-size: 0.7rem;
 }
