@@ -12,10 +12,10 @@ const Footer = () => {
           <h4>Quick links</h4>
           <ul>
             <li>
-              <a href="#">Services</a>
+              <a href="#services">Services</a>
             </li>
             <li>
-              <a href="#">About</a>
+              <a href="#about-carolina-almeida">About</a>
             </li>
             <li>
               <a href="#">Contact</a>
@@ -26,13 +26,13 @@ const Footer = () => {
           <h4>Services</h4>
           <ul>
             <li>
-              <a href="#">1-on-1 Training</a>
+              <a href="#1-on-1-personal-training">1-on-1 Training</a>
             </li>
             <li>
-              <a href="#">Semi-Private</a>
+              <a href="#semi-private-training">Semi-Private</a>
             </li>
             <li>
-              <a href="#">Fitness Programs</a>
+              <a href="#custom-fitness-programs">Fitness Programs</a>
             </li>
           </ul>
         </div>

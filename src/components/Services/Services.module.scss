@@ -1,0 +1,38 @@
+.wrapper {
+  background: rgb(204 203 203);
+  padding: 3rem 0;
+  padding-top: 0;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+
+  li {
+    display: flex;
+    gap: 0.5rem;
+    padding: 1rem 0;
+  }
+}
+.section {
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+  padding: 1rem 0;
+
+  @media screen and (min-width: 600px) {
+    flex-direction: row;
+  }
+}
+
+.service {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 2px 3px 12px 2px #00000014;
+
+  h3 {
+    display: flex;
+    gap: 1rem;
+  }
+}

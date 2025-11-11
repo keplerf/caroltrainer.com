@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-E2P5R49LP0"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-E2P5R49LP0");
+    </script>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/carol-personal-trainer.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -382,8 +396,12 @@
               >Personal Trainer</a
             >
           </li>
-          <!-- <li><a href="#" role="button">Fitness Programs</a></li> -->
+          <li>
+            <a href="#services" role="button">Services</a>
+          </li>
+
           <li><a href="#about-carolina-almeida" role="button">About</a></li>
+          <li><a href="#contact" role="button">Contact</a></li>
         </ul>
         <p class="set">
           <svg
@@ -431,11 +449,11 @@
             >+1 778 302 9893</a
           >
           <a
-            href="https://wa.me/7783029893?text=I'm%20interested%20in%20personal%20training"
+            href="#contact"
             class="what btn"
-            aria-label="Send a WhatsApp to Carolina Simoes about personal training anf fitnes coach"
+            aria-label="Conatct Carolina Simoes about personal training anf fitnes coach"
           >
-            Chat on WhatsApp
+            Contact
           </a>
         </div>
         <picture class="hero-image">
@@ -529,12 +547,10 @@
           combining expert coaching, accountability, and motivation. Train in
           person in Vancouver or with online support that fits your schedule.
         </p>
-        <h3>Move better. Feel stronger. Live fully.</h3>
       </article>
     </section>
     <div id="root"></div>
 
-    <!-- <script type="module" src="/src/main.jsx"></script> -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         const nav = document.querySelector(".nav");
