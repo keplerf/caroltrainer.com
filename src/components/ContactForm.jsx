@@ -1,11 +1,12 @@
 import { useState } from "react";
 import axios from "axios";
 import styles from "./ContactForm.module.scss";
+
 export default function ContactForm() {
-  const [mailSent, setmailSent] = useState(false);
-  const [error, setError] = useState(null);
   const [status, setStatus] = useState({ state: "idle" });
-  const [honeypotStatus, sethoneypotStatus] = useState(false);
+  const [errors, setErrors] = useState([]);
+  const [honeypotStatus, setHoneypotStatus] = useState(false);
+  const [touched, setTouched] = useState({});
   const [formValue, setFormValue] = useState({
     firstName: "",
     lastName: "",
@@ -14,145 +15,237 @@ export default function ContactForm() {
     message: "",
   });
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-    console.log("Form Submited");
-    setStatus({ state: "submitting" });
+  function validateForm() {
+    const newErrors = [];
 
-    const form = e.currentTarget;
-    const fd = form;
-    axios({
-      method: "POST",
-      url: "https://www.caroltrainer.com/app/contact.php",
-      headers: { "content-type": "application/json" },
-      data: formValue,
-    })
-      .then((result) => {
-        if (result.data.success) {
-          setmailSent(result.data.success);
-          setStatus({ state: "submited" });
-          setError(false);
-        } else {
-          setmailSent(false);
-          // console.log("result", result.data.errors);
-          setError(result.data.errors);
-        }
-      })
-      .catch((error) => {
-        setError(error);
-      });
-    console.log("kep", error);
+    if (!formValue.firstName.trim()) {
+      newErrors.push({ field: "firstName", message: "First name is required" });
+    }
+
+    if (!formValue.lastName.trim()) {
+      newErrors.push({ field: "lastName", message: "Last name is required" });
+    }
+
+    if (!formValue.phone.trim()) {
+      newErrors.push({ field: "phone", message: "Phone number is required" });
+    }
+
+    if (!formValue.email.trim()) {
+      newErrors.push({ field: "email", message: "Email is required" });
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formValue.email)) {
+      newErrors.push({ field: "email", message: "Please enter a valid email address" });
+    }
+
+    return newErrors;
   }
 
-  function honeypotActive(e) {
-    if (e.name === "midName" && e.value) {
-      sethoneypotStatus(true);
-      return true;
+  function getFieldError(fieldName) {
+    return errors.find((e) => e.field === fieldName)?.message;
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    const validationErrors = validateForm();
+    if (validationErrors.length > 0) {
+      setErrors(validationErrors);
+      setTouched({ firstName: true, lastName: true, phone: true, email: true });
+      return;
     }
-    sethoneypotStatus(false);
-    return false;
+
+    setStatus({ state: "submitting" });
+    setErrors([]);
+
+    try {
+      const result = await axios({
+        method: "POST",
+        url: "https://www.caroltrainer.com/app/contact.php",
+        headers: { "content-type": "application/json" },
+        data: formValue,
+      });
+
+      if (result.data.success) {
+        setStatus({ state: "submitted" });
+      } else {
+        setErrors(
+          result.data.errors?.map((msg, i) => ({ field: "server", message: msg })) ||
+          [{ field: "server", message: "Something went wrong" }]
+        );
+        setStatus({ state: "error" });
+      }
+    } catch (err) {
+      setErrors([{ field: "server", message: "Failed to send message. Please try again." }]);
+      setStatus({ state: "error" });
+    }
   }
 
   function handleChange(e) {
-    let label = e.target.name;
-    setFormValue((prev) => ({ ...prev, [label]: e.target.value }));
-    honeypotActive(e.target);
+    const { name, value } = e.target;
+    setFormValue((prev) => ({ ...prev, [name]: value }));
+
+    if (name === "midName" && value) {
+      setHoneypotStatus(true);
+    }
+
+    if (touched[name]) {
+      setErrors((prev) => prev.filter((err) => err.field !== name));
+    }
   }
+
+  function handleBlur(e) {
+    const { name } = e.target;
+    setTouched((prev) => ({ ...prev, [name]: true }));
+  }
+
+  const isSubmitting = status.state === "submitting";
+  const serverErrors = errors.filter((e) => e.field === "server");
 
   return (
     <div className={styles.section} id="contact">
-      {status.state === "submited" ? (
-        <h3>Thank you</h3>
+      {status.state === "submitted" ? (
+        <div className={styles.successMessage} role="status" aria-live="polite">
+          <h3>Thank you!</h3>
+          <p>Your message has been sent. We'll be in touch soon.</p>
+        </div>
       ) : (
         <div>
           <h3>Contact</h3>
-          <form onSubmit={handleSubmit} noValidate className={styles.form}>
-            <label>
+          <form onSubmit={handleSubmit} noValidate className={styles.form} aria-label="Contact form">
+            <div className={styles.fieldGroup}>
+              <label htmlFor="firstName" className={styles.label}>
+                First Name <span aria-hidden="true">*</span>
+              </label>
               <input
-                placeholder="Name"
+                id="firstName"
                 name="firstName"
                 type="text"
                 required
+                aria-required="true"
+                aria-invalid={touched.firstName && getFieldError("firstName") ? "true" : undefined}
+                aria-describedby={getFieldError("firstName") ? "firstName-error" : undefined}
                 onChange={handleChange}
+                onBlur={handleBlur}
+                disabled={isSubmitting}
               />
-            </label>
-            <label style={{ height: 0, overflow: "hidden", display: "block" }}>
+              {touched.firstName && getFieldError("firstName") && (
+                <span id="firstName-error" className={styles.fieldError} role="alert">
+                  {getFieldError("firstName")}
+                </span>
+              )}
+            </div>
+
+            {/* Honeypot field - hidden from real users */}
+            <div aria-hidden="true" style={{ position: "absolute", left: "-9999px" }}>
+              <label htmlFor="midName">Leave this empty</label>
               <input
+                id="midName"
                 name="midName"
                 type="text"
-                style={{ display: "none" }}
                 tabIndex={-1}
                 autoComplete="off"
                 onChange={handleChange}
               />
-            </label>
-            <label>
+            </div>
+
+            <div className={styles.fieldGroup}>
+              <label htmlFor="lastName" className={styles.label}>
+                Last Name <span aria-hidden="true">*</span>
+              </label>
               <input
-                placeholder=" Last Name"
+                id="lastName"
                 name="lastName"
                 type="text"
                 required
+                aria-required="true"
+                aria-invalid={touched.lastName && getFieldError("lastName") ? "true" : undefined}
+                aria-describedby={getFieldError("lastName") ? "lastName-error" : undefined}
                 onChange={handleChange}
+                onBlur={handleBlur}
+                disabled={isSubmitting}
               />
-            </label>
+              {touched.lastName && getFieldError("lastName") && (
+                <span id="lastName-error" className={styles.fieldError} role="alert">
+                  {getFieldError("lastName")}
+                </span>
+              )}
+            </div>
 
-            <label>
+            <div className={styles.fieldGroup}>
+              <label htmlFor="phone" className={styles.label}>
+                Phone <span aria-hidden="true">*</span>
+              </label>
               <input
-                placeholder="Phone"
+                id="phone"
                 name="phone"
-                type="phone"
+                type="tel"
                 required
+                aria-required="true"
+                aria-invalid={touched.phone && getFieldError("phone") ? "true" : undefined}
+                aria-describedby={getFieldError("phone") ? "phone-error" : undefined}
                 onChange={handleChange}
+                onBlur={handleBlur}
+                disabled={isSubmitting}
               />
-            </label>
+              {touched.phone && getFieldError("phone") && (
+                <span id="phone-error" className={styles.fieldError} role="alert">
+                  {getFieldError("phone")}
+                </span>
+              )}
+            </div>
 
-            <label>
+            <div className={styles.fieldGroup}>
+              <label htmlFor="email" className={styles.label}>
+                Email <span aria-hidden="true">*</span>
+              </label>
               <input
-                placeholder="Email"
+                id="email"
                 name="email"
                 type="email"
                 required
+                aria-required="true"
+                aria-invalid={touched.email && getFieldError("email") ? "true" : undefined}
+                aria-describedby={getFieldError("email") ? "email-error" : undefined}
                 onChange={handleChange}
+                onBlur={handleBlur}
+                disabled={isSubmitting}
               />
-            </label>
+              {touched.email && getFieldError("email") && (
+                <span id="email-error" className={styles.fieldError} role="alert">
+                  {getFieldError("email")}
+                </span>
+              )}
+            </div>
 
-            <label>
+            <div className={styles.fieldGroup}>
+              <label htmlFor="message" className={styles.label}>
+                Message
+              </label>
               <textarea
-                placeholder=" Message"
+                id="message"
                 name="message"
                 rows={5}
                 onChange={handleChange}
+                onBlur={handleBlur}
+                disabled={isSubmitting}
               />
-            </label>
-            {error &&
-              error.map((i) => {
-                return <p>* {i}</p>;
-              })}
+            </div>
 
-            {error && (
-              <>
-                <h3>"Something went wrong. Please try again"</h3>
-              </>
+            {serverErrors.length > 0 && (
+              <div className={styles.serverError} role="alert" aria-live="assertive">
+                {serverErrors.map((err, index) => (
+                  <p key={index}>{err.message}</p>
+                ))}
+              </div>
             )}
 
             <button
               className={styles.button}
               type="submit"
-              disabled={honeypotStatus}
+              disabled={honeypotStatus || isSubmitting}
+              aria-disabled={honeypotStatus || isSubmitting}
             >
-              {status.state === "submitting"
-                ? !Error
-                  ? "Sending..."
-                  : "Try again"
-                : "Send"}
+              {isSubmitting ? "Sending..." : "Send"}
             </button>
-
-            {status.state === "success" && (
-              <p style={{ color: "green" }}>{status.message}</p>
-            )}
-            {status.state === "error" && (
-              <p style={{ color: "crimson" }}>{status.message}</p>
-            )}
           </form>
         </div>
       )}

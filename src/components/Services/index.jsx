@@ -37,56 +37,50 @@ const content = [
   },
 ];
 
+const icons = {
+  clipboard: Clipboard,
+  calendar: Calendar,
+  user: User,
+};
+
 function ServiceIcon({ icon, ...props }) {
-  switch (icon) {
-    case "clipboard":
-      return <Clipboard {...props} />;
-      break;
-    case "calendar":
-      return <Calendar {...props} />;
-      break;
-    default:
-      return <User {...props} />;
-  }
+  const Icon = icons[icon] || User;
+  return <Icon {...props} />;
 }
 
 function ServiceList({ list }) {
-  const render = list.map((i) => {
-    return (
-      <li key={i}>
-        <Check color="green" />
-        <span>{i}</span>
-      </li>
-    );
-  });
-
-  return <ul className={styles.list}> {render} </ul>;
+  return (
+    <ul className={styles.list}>
+      {list.map((item) => (
+        <li key={item}>
+          <Check color="green" />
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+  );
 }
 
 const Services = () => {
   return (
     <div className={styles.wrapper}>
       <article className="container">
-        <h2 id="services"> Services</h2>
+        <h2 id="services">Services</h2>
         <p>
           Customized programs designed for your unique goals, schedule, and
           fitness level.
         </p>
         <section className={styles.section}>
-          {content.map((service) => {
-            return (
-              <div key={service.title} className={styles.service}>
-                <h3 id={service.id}>
-                  {service.icon && (
-                    <ServiceIcon icon={service.icon} color="#f78948" />
-                  )}
-                  {service.title}
-                </h3>
-                <p>{service.text}</p>
-                <ServiceList list={service.list} />
-              </div>
-            );
-          })}
+          {content.map((service) => (
+            <div key={service.id} className={styles.service}>
+              <h3 id={service.id}>
+                <ServiceIcon icon={service.icon} color="#f78948" />
+                {service.title}
+              </h3>
+              <p>{service.text}</p>
+              <ServiceList list={service.list} />
+            </div>
+          ))}
         </section>
       </article>
     </div>

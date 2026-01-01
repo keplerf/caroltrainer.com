@@ -1,4 +1,4 @@
-import React, { use, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 export default function ContactForm() {
   const [mailSent, setmailSent] = useState(false);
@@ -16,7 +16,6 @@ export default function ContactForm() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log("Form Submited");
     // setStatus({ state: "submitting" });
 
     const form = e.currentTarget;
@@ -28,13 +27,10 @@ export default function ContactForm() {
       data: formValue,
     })
       .then((result) => {
-        console.log("kep data ", result);
         if (result.data.success) {
           setmailSent(result.data.success);
           setError(false);
-          console.log("kep ", result.data.success);
         } else {
-          console.log("kep ", result.data.success);
           setmailSent(false);
           setError(true);
         }

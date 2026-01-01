@@ -18,7 +18,6 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/carol-personal-trainer.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
       Carolina Almeida | Elite 1-on-1 Personal Trainer in Downtown Vancouver
     </title>
@@ -500,9 +499,7 @@
         Ready to take the first step? Schedule your free consultation now and
         let's achieve your fitness goals together.
       </p>
-
       <h2 id="about-carolina-almeida">About Me - Carol Almeida</h2>
-
       <p>
         Hi, I'm Carol Almeida, a results-driven personal trainer with over 20
         years of experience helping people transform their lives through
@@ -510,14 +507,12 @@
         programs for individuals who value their time and want real, lasting
         results.
       </p>
-
       <p>
         My approach combines deep expertise with genuine care. Every client is
         unique, so I design programs around your goals, fitness level, mobility,
         and lifestyle—ensuring that you not only look better but also move,
         feel, and live better.
       </p>
-
       <p>
         I hold a Master's in Sport Training and a Bachelor's in Physical
         Education, and I'm an ACE Certified Personal Trainer and Fitness
@@ -525,7 +520,6 @@
         of experience coaching both in-person and online, I blend science with
         proven coaching strategies to deliver measurable, lasting change.
       </p>
-
       <h2>Expertise & Specialties</h2>
       <ul>
         <li>1-on-1 Personal Training</li>
@@ -560,6 +554,14 @@
         );
         const scrollWatcher = document.createElement("div");
 
+        navlinks.forEach((item) => {
+          let content = [];
+          for (var i = 0; i < item.innerHTML.length; i++) {
+            const newcontent = item.innerHTML.slice(i, i + 1);
+            content.push(`<span className='fdf'>${newcontent}</span>`);
+          }
+        });
+
         navtrigger.addEventListener("click", function () {
           nav.classList.toggle("active");
           navtrigger.innerHTML("navtrig");
@@ -582,42 +584,6 @@
         navObserver.observe(scrollWatcher);
       });
     </script>
-
-    <!-- <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const faqButtons = document.querySelectorAll(".faq__btn");
-
-        faqButtons.forEach((button) => {
-          button.addEventListener("click", function () {
-            const faqBody = this.nextElementSibling;
-            const plusIcon = this.querySelector(".plus-icon");
-            const minusIcon = this.querySelector(".minus-icon");
-
-            document.querySelectorAll(".faq__body").forEach((body) => {
-              if (body !== faqBody) {
-                body.style.maxHeight = null;
-                body.previousElementSibling.querySelector(
-                  ".plus-icon"
-                ).style.display = "block";
-                body.previousElementSibling.querySelector(
-                  ".minus-icon"
-                ).style.display = "none";
-              }
-            });
-
-            if (faqBody.style.maxHeight) {
-              faqBody.style.maxHeight = null;
-              plusIcon.style.display = "block";
-              minusIcon.style.display = "none";
-            } else {
-              faqBody.style.maxHeight = faqBody.scrollHeight + "px";
-              plusIcon.style.display = "none";
-              minusIcon.style.display = "block";
-            }
-          });
-        });
-      });
-    </script> -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
