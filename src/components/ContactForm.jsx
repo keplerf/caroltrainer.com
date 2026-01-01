@@ -149,160 +149,185 @@ export default function ContactForm() {
 
   if (status.state === "submitted") {
     return (
-      <div className={styles.section} id="contact">
-        <div className={styles.successMessage} role="status" aria-live="polite">
-          <h3>Thank you!</h3>
-          <p>Your message has been sent. We'll be in touch soon.</p>
+      <section className={styles.wrapper} id="contact">
+        <div className={styles.container}>
+          <div className={styles.successMessage} role="status" aria-live="polite">
+            <div className={styles.successIcon} aria-hidden="true">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                <polyline points="22 4 12 14.01 9 11.01" />
+              </svg>
+            </div>
+            <h3>Thank you!</h3>
+            <p>Your message has been sent successfully. We'll be in touch within 24 hours.</p>
+          </div>
         </div>
-      </div>
+      </section>
     );
   }
 
   return (
-    <div className={styles.section} id="contact">
-      <h3>Contact</h3>
-      <form onSubmit={handleSubmit} noValidate className={styles.form} aria-label="Contact form">
-        <FormField
-          id="firstName"
-          label="First Name"
-          required
-          error={getFieldError("firstName")}
-          touched={touched.firstName}
-        >
-          <input
-            id="firstName"
-            name="firstName"
-            type="text"
-            required
-            aria-required="true"
-            aria-invalid={touched.firstName && getFieldError("firstName") ? "true" : undefined}
-            aria-describedby={getFieldError("firstName") ? "firstName-error" : undefined}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            disabled={isSubmitting}
-          />
-        </FormField>
+    <section className={styles.wrapper} id="contact" aria-labelledby="contact-heading">
+      <div className={styles.container}>
+        <header className={styles.header}>
+          <h2 id="contact-heading" className={styles.title}>Get In Touch</h2>
+          <p className={styles.subtitle}>
+            Ready to start your fitness journey? Send us a message and we'll get back to you shortly.
+          </p>
+        </header>
 
-        {/* Honeypot field */}
-        <div aria-hidden="true" style={{ position: "absolute", left: "-9999px" }}>
-          <label htmlFor="midName">Leave this empty</label>
-          <input
-            id="midName"
-            name="midName"
-            type="text"
-            tabIndex={-1}
-            autoComplete="off"
-            onChange={handleChange}
-          />
-        </div>
+        <form onSubmit={handleSubmit} noValidate className={styles.form} aria-label="Contact form">
+          <div className={styles.row}>
+            <FormField
+              id="firstName"
+              label="First Name"
+              required
+              error={getFieldError("firstName")}
+              touched={touched.firstName}
+            >
+              <input
+                id="firstName"
+                name="firstName"
+                type="text"
+                placeholder="John"
+                required
+                aria-required="true"
+                aria-invalid={touched.firstName && getFieldError("firstName") ? "true" : undefined}
+                aria-describedby={getFieldError("firstName") ? "firstName-error" : undefined}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                disabled={isSubmitting}
+              />
+            </FormField>
 
-        <FormField
-          id="lastName"
-          label="Last Name"
-          required
-          error={getFieldError("lastName")}
-          touched={touched.lastName}
-        >
-          <input
-            id="lastName"
-            name="lastName"
-            type="text"
-            required
-            aria-required="true"
-            aria-invalid={touched.lastName && getFieldError("lastName") ? "true" : undefined}
-            aria-describedby={getFieldError("lastName") ? "lastName-error" : undefined}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            disabled={isSubmitting}
-          />
-        </FormField>
-
-        <FormField
-          id="phone"
-          label="Phone"
-          required
-          error={getFieldError("phone")}
-          touched={touched.phone}
-        >
-          <input
-            id="phone"
-            name="phone"
-            type="tel"
-            required
-            aria-required="true"
-            aria-invalid={touched.phone && getFieldError("phone") ? "true" : undefined}
-            aria-describedby={getFieldError("phone") ? "phone-error" : undefined}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            disabled={isSubmitting}
-          />
-        </FormField>
-
-        <FormField
-          id="email"
-          label="Email"
-          required
-          error={getFieldError("email")}
-          touched={touched.email}
-        >
-          <input
-            id="email"
-            name="email"
-            type="email"
-            required
-            aria-required="true"
-            aria-invalid={touched.email && getFieldError("email") ? "true" : undefined}
-            aria-describedby={getFieldError("email") ? "email-error" : undefined}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            disabled={isSubmitting}
-          />
-        </FormField>
-
-        <FormField id="service" label="Service Interested In">
-          <select
-            id="service"
-            name="service"
-            value={formValue.service}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            disabled={isSubmitting}
-          >
-            {SERVICE_OPTIONS.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-        </FormField>
-
-        <FormField id="message" label="Message">
-          <textarea
-            id="message"
-            name="message"
-            rows={5}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            disabled={isSubmitting}
-          />
-        </FormField>
-
-        {serverErrors.length > 0 && (
-          <div className={styles.serverError} role="alert" aria-live="assertive">
-            {serverErrors.map((err, index) => (
-              <p key={index}>{err.message}</p>
-            ))}
+            <FormField
+              id="lastName"
+              label="Last Name"
+              required
+              error={getFieldError("lastName")}
+              touched={touched.lastName}
+            >
+              <input
+                id="lastName"
+                name="lastName"
+                type="text"
+                placeholder="Doe"
+                required
+                aria-required="true"
+                aria-invalid={touched.lastName && getFieldError("lastName") ? "true" : undefined}
+                aria-describedby={getFieldError("lastName") ? "lastName-error" : undefined}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                disabled={isSubmitting}
+              />
+            </FormField>
           </div>
-        )}
 
-        <button
-          className={styles.button}
-          type="submit"
-          disabled={honeypotStatus || isSubmitting}
-        >
-          {isSubmitting ? "Sending..." : "Send"}
-        </button>
-      </form>
-    </div>
+          {/* Honeypot field */}
+          <div aria-hidden="true" style={{ position: "absolute", left: "-9999px" }}>
+            <label htmlFor="midName">Leave this empty</label>
+            <input
+              id="midName"
+              name="midName"
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className={styles.row}>
+            <FormField
+              id="phone"
+              label="Phone"
+              required
+              error={getFieldError("phone")}
+              touched={touched.phone}
+            >
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                placeholder="(604) 555-0123"
+                required
+                aria-required="true"
+                aria-invalid={touched.phone && getFieldError("phone") ? "true" : undefined}
+                aria-describedby={getFieldError("phone") ? "phone-error" : undefined}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                disabled={isSubmitting}
+              />
+            </FormField>
+
+            <FormField
+              id="email"
+              label="Email"
+              required
+              error={getFieldError("email")}
+              touched={touched.email}
+            >
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="john@example.com"
+                required
+                aria-required="true"
+                aria-invalid={touched.email && getFieldError("email") ? "true" : undefined}
+                aria-describedby={getFieldError("email") ? "email-error" : undefined}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                disabled={isSubmitting}
+              />
+            </FormField>
+          </div>
+
+          <FormField id="service" label="Service Interested In">
+            <select
+              id="service"
+              name="service"
+              value={formValue.service}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              disabled={isSubmitting}
+            >
+              {SERVICE_OPTIONS.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </FormField>
+
+          <FormField id="message" label="Message">
+            <textarea
+              id="message"
+              name="message"
+              rows={5}
+              placeholder="Tell us about your fitness goals..."
+              onChange={handleChange}
+              onBlur={handleBlur}
+              disabled={isSubmitting}
+            />
+          </FormField>
+
+          {serverErrors.length > 0 && (
+            <div className={styles.serverError} role="alert" aria-live="assertive">
+              {serverErrors.map((err, index) => (
+                <p key={index}>{err.message}</p>
+              ))}
+            </div>
+          )}
+
+          <button
+            className={styles.button}
+            type="submit"
+            disabled={honeypotStatus || isSubmitting}
+          >
+            {isSubmitting ? "Sending..." : "Send Message"}
+          </button>
+        </form>
+      </div>
+    </section>
   );
 }
