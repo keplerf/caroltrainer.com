@@ -1,4 +1,4 @@
-import { Check, User, Clipboard, Calendar } from "react-feather";
+import { Check, User, Clipboard, Users } from "react-feather";
 import styles from "./Services.module.scss";
 
 const content = [
@@ -12,10 +12,11 @@ const content = [
       "45-60 minute sessions",
       "Flexible scheduling",
     ],
+    highlight: true,
   },
   {
     id: "semi-private-training",
-    icon: "calendar",
+    icon: "users",
     title: "Semi-Private Training",
     text: "Small group sessions (2-4 people) for friends or colleagues with similar goals.",
     list: [
@@ -31,21 +32,25 @@ const content = [
     text: "For existing clients only: personalized workout plans for independent training.",
     list: [
       "Detailed exercise instructions",
-      "45-60 minute sessions",
-      "Flexible scheduling",
+      "Progress tracking included",
+      "Weekly plan updates",
     ],
   },
 ];
 
 const icons = {
   clipboard: Clipboard,
-  calendar: Calendar,
+  users: Users,
   user: User,
 };
 
-function ServiceIcon({ icon, ...props }) {
+function ServiceIcon({ icon }) {
   const Icon = icons[icon] || User;
-  return <Icon {...props} />;
+  return (
+    <div className={styles.iconWrapper}>
+      <Icon size={28} strokeWidth={1.5} />
+    </div>
+  );
 }
 
 function ServiceList({ list }) {
@@ -53,7 +58,7 @@ function ServiceList({ list }) {
     <ul className={styles.list}>
       {list.map((item) => (
         <li key={item}>
-          <Check color="green" />
+          <Check size={18} className={styles.checkIcon} />
           <span>{item}</span>
         </li>
       ))}
@@ -62,28 +67,65 @@ function ServiceList({ list }) {
 }
 
 const Services = () => {
+  function handleCtaClick(e, serviceId) {
+    e.preventDefault();
+
+    // Update URL hash with service parameter
+    window.history.pushState(null, "", `#contact?service=${serviceId}`);
+
+    // Scroll to contact section
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+
+    // Dispatch hashchange event so ContactForm can update
+    window.dispatchEvent(new HashChangeEvent("hashchange"));
+  }
+
   return (
-    <div className={styles.wrapper}>
-      <article className="container">
-        <h2 id="services">Services</h2>
-        <p>
-          Customized programs designed for your unique goals, schedule, and
-          fitness level.
-        </p>
-        <section className={styles.section}>
+    <section
+      className={styles.wrapper}
+      id="services"
+      aria-labelledby="services-heading"
+    >
+      <div className={styles.container}>
+        <header className={styles.header}>
+          <h2 id="services-heading" className={styles.title}>
+            Services
+          </h2>
+          <p className={styles.subtitle}>
+            Customized programs designed for your unique goals, schedule, and
+            fitness level.
+          </p>
+        </header>
+
+        <div className={styles.grid}>
           {content.map((service) => (
-            <div key={service.id} className={styles.service}>
-              <h3 id={service.id}>
-                <ServiceIcon icon={service.icon} color="#f78948" />
+            <article
+              key={service.id}
+              className={`${styles.card} ${
+                service.highlight ? styles.cardHighlight : ""
+              }`}
+            >
+              <ServiceIcon icon={service.icon} />
+              <h3 className={styles.cardTitle} id={service.id}>
                 {service.title}
               </h3>
-              <p>{service.text}</p>
+              <p className={styles.cardText}>{service.text}</p>
               <ServiceList list={service.list} />
-            </div>
+              <a
+                href={`#contact?service=${service.id}`}
+                className={styles.cardCta}
+                onClick={(e) => handleCtaClick(e, service.id)}
+              >
+                Get Started
+              </a>
+            </article>
           ))}
-        </section>
-      </article>
-    </div>
+        </div>
+      </div>
+    </section>
   );
 };
 

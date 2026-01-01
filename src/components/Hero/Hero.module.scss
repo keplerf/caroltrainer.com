@@ -1,0 +1,168 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.background {
+  position: absolute;
+  // Extend beyond container to prevent gaps during parallax
+  top: -20%;
+  left: 0;
+  right: 0;
+  bottom: -20%;
+  background-image: url("/src/assets/images/hero-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  z-index: -2;
+  // GPU acceleration for smooth transforms
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+
+  // Overlay for better text readability
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0.4) 100%
+    );
+  }
+}
+
+.content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.text {
+  flex: 1;
+  max-width: 600px;
+}
+
+.title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  color: white;
+  margin: 0 0 1rem;
+  line-height: 1.1;
+}
+
+.subtitle {
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 2rem;
+  line-height: 1.4;
+}
+
+.cta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.buttonPrimary,
+.buttonSecondary {
+  display: inline-block;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.buttonPrimary {
+  background-color: #e63946;
+  color: white;
+
+  &:hover {
+    background-color: #d62839;
+    transform: translateY(-2px);
+  }
+}
+
+.buttonSecondary {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+
+  &:hover {
+    background-color: white;
+    color: #333;
+    transform: translateY(-2px);
+  }
+}
+
+.overlay {
+  flex: 0 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.overlayImage {
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+// Mobile styles
+@media (max-width: 968px) {
+  .content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .text {
+    max-width: 100%;
+  }
+
+  .cta {
+    justify-content: center;
+  }
+
+  .overlay {
+    order: -1;
+  }
+
+  .overlayImage {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .buttonPrimary,
+  .buttonSecondary {
+    width: 100%;
+  }
+}
+
+// Disable parallax on mobile/reduced motion for better performance
+@media (max-width: 768px), (prefers-reduced-motion: reduce) {
+  .background {
+    top: 0;
+    bottom: 0;
+    will-change: auto;
+    transform: none !important;
+  }
+}
