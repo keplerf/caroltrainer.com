@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "./ContactForm.module.scss";
+import { FormField } from "./FormField";
+import { useGetParamsFromURL } from "/src/hooks/useGetParamsFromURL";
+
+const SERVER_POST = "https://www.caroltrainer.com/app/contact.php";
 
 const SERVICE_OPTIONS = [
   { value: "", label: "Select a service..." },
@@ -19,33 +23,6 @@ const INITIAL_FORM_STATE = {
   message: "",
 };
 
-function getServiceFromURL() {
-  const hash = window.location.hash;
-  if (hash.includes("?")) {
-    const params = new URLSearchParams(hash.split("?")[1]);
-    return params.get("service") || "";
-  }
-  return "";
-}
-
-function FormField({ id, label, required, error, touched, children }) {
-  const showError = touched && error;
-
-  return (
-    <div className={styles.fieldGroup}>
-      <label htmlFor={id} className={styles.label}>
-        {label} {required && <span aria-hidden="true">*</span>}
-      </label>
-      {children}
-      {showError && (
-        <span id={`${id}-error`} className={styles.fieldError} role="alert">
-          {error}
-        </span>
-      )}
-    </div>
-  );
-}
-
 export default function ContactForm() {
   const [status, setStatus] = useState({ state: "idle" });
   const [errors, setErrors] = useState([]);
@@ -55,8 +32,10 @@ export default function ContactForm() {
 
   useEffect(() => {
     function updateServiceFromURL() {
-      const serviceFromURL = getServiceFromURL();
-      const isValidService = SERVICE_OPTIONS.some((opt) => opt.value === serviceFromURL);
+      const serviceFromURL = useGetParamsFromURL("service");
+      const isValidService = SERVICE_OPTIONS.some(
+        (opt) => opt.value === serviceFromURL
+      );
       if (serviceFromURL && isValidService) {
         setFormValue((prev) => ({ ...prev, service: serviceFromURL }));
       }
@@ -86,7 +65,10 @@ export default function ContactForm() {
     if (!formValue.email.trim()) {
       newErrors.push({ field: "email", message: "Email is required" });
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formValue.email)) {
-      newErrors.push({ field: "email", message: "Please enter a valid email address" });
+      newErrors.push({
+        field: "email",
+        message: "Please enter a valid email address",
+      });
     }
 
     return newErrors;
@@ -122,11 +104,9 @@ export default function ContactForm() {
     setErrors([]);
 
     try {
-      const result = await axios.post(
-        "https://www.caroltrainer.com/app/contact.php",
-        formValue,
-        { headers: { "content-type": "application/json" } }
-      );
+      const result = await axios.post(SERVER_POST, formValue, {
+        headers: { "content-type": "application/json" },
+      });
 
       if (result.data.success) {
         setStatus({ state: "submitted" });
@@ -139,7 +119,12 @@ export default function ContactForm() {
         setStatus({ state: "error" });
       }
     } catch {
-      setErrors([{ field: "server", message: "Failed to send message. Please try again." }]);
+      setErrors([
+        {
+          field: "server",
+          message: "Failed to send message. Please try again.",
+        },
+      ]);
       setStatus({ state: "error" });
     }
   }
@@ -151,15 +136,29 @@ export default function ContactForm() {
     return (
       <section className={styles.wrapper} id="contact">
         <div className={styles.container}>
-          <div className={styles.successMessage} role="status" aria-live="polite">
+          <div
+            className={styles.successMessage}
+            role="status"
+            aria-live="polite"
+          >
             <div className={styles.successIcon} aria-hidden="true">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg
+                width="48"
+                height="48"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
                 <polyline points="22 4 12 14.01 9 11.01" />
               </svg>
             </div>
             <h3>Thank you!</h3>
-            <p>Your message has been sent successfully. We'll be in touch within 24 hours.</p>
+            <p>
+              Your message has been sent successfully. We'll be in touch within
+              24 hours.
+            </p>
           </div>
         </div>
       </section>
@@ -167,16 +166,28 @@ export default function ContactForm() {
   }
 
   return (
-    <section className={styles.wrapper} id="contact" aria-labelledby="contact-heading">
+    <section
+      className={styles.wrapper}
+      id="contact"
+      aria-labelledby="contact-heading"
+    >
       <div className={styles.container}>
         <header className={styles.header}>
-          <h2 id="contact-heading" className={styles.title}>Get In Touch</h2>
+          <h2 id="contact-heading" className={styles.title}>
+            Get In Touch
+          </h2>
           <p className={styles.subtitle}>
-            Ready to start your fitness journey? Send us a message and we'll get back to you shortly.
+            Ready to start your fitness journey? Send us a message and we'll get
+            back to you shortly.
           </p>
         </header>
 
-        <form onSubmit={handleSubmit} noValidate className={styles.form} aria-label="Contact form">
+        <form
+          onSubmit={handleSubmit}
+          noValidate
+          className={styles.form}
+          aria-label="Contact form"
+        >
           <div className={styles.row}>
             <FormField
               id="firstName"
@@ -192,8 +203,14 @@ export default function ContactForm() {
                 placeholder="John"
                 required
                 aria-required="true"
-                aria-invalid={touched.firstName && getFieldError("firstName") ? "true" : undefined}
-                aria-describedby={getFieldError("firstName") ? "firstName-error" : undefined}
+                aria-invalid={
+                  touched.firstName && getFieldError("firstName")
+                    ? "true"
+                    : undefined
+                }
+                aria-describedby={
+                  getFieldError("firstName") ? "firstName-error" : undefined
+                }
                 onChange={handleChange}
                 onBlur={handleBlur}
                 disabled={isSubmitting}
@@ -214,8 +231,14 @@ export default function ContactForm() {
                 placeholder="Doe"
                 required
                 aria-required="true"
-                aria-invalid={touched.lastName && getFieldError("lastName") ? "true" : undefined}
-                aria-describedby={getFieldError("lastName") ? "lastName-error" : undefined}
+                aria-invalid={
+                  touched.lastName && getFieldError("lastName")
+                    ? "true"
+                    : undefined
+                }
+                aria-describedby={
+                  getFieldError("lastName") ? "lastName-error" : undefined
+                }
                 onChange={handleChange}
                 onBlur={handleBlur}
                 disabled={isSubmitting}
@@ -224,7 +247,10 @@ export default function ContactForm() {
           </div>
 
           {/* Honeypot field */}
-          <div aria-hidden="true" style={{ position: "absolute", left: "-9999px" }}>
+          <div
+            aria-hidden="true"
+            style={{ position: "absolute", left: "-9999px" }}
+          >
             <label htmlFor="midName">Leave this empty</label>
             <input
               id="midName"
@@ -251,8 +277,12 @@ export default function ContactForm() {
                 placeholder="(604) 555-0123"
                 required
                 aria-required="true"
-                aria-invalid={touched.phone && getFieldError("phone") ? "true" : undefined}
-                aria-describedby={getFieldError("phone") ? "phone-error" : undefined}
+                aria-invalid={
+                  touched.phone && getFieldError("phone") ? "true" : undefined
+                }
+                aria-describedby={
+                  getFieldError("phone") ? "phone-error" : undefined
+                }
                 onChange={handleChange}
                 onBlur={handleBlur}
                 disabled={isSubmitting}
@@ -273,8 +303,12 @@ export default function ContactForm() {
                 placeholder="john@example.com"
                 required
                 aria-required="true"
-                aria-invalid={touched.email && getFieldError("email") ? "true" : undefined}
-                aria-describedby={getFieldError("email") ? "email-error" : undefined}
+                aria-invalid={
+                  touched.email && getFieldError("email") ? "true" : undefined
+                }
+                aria-describedby={
+                  getFieldError("email") ? "email-error" : undefined
+                }
                 onChange={handleChange}
                 onBlur={handleBlur}
                 disabled={isSubmitting}
@@ -312,7 +346,11 @@ export default function ContactForm() {
           </FormField>
 
           {serverErrors.length > 0 && (
-            <div className={styles.serverError} role="alert" aria-live="assertive">
+            <div
+              className={styles.serverError}
+              role="alert"
+              aria-live="assertive"
+            >
               {serverErrors.map((err, index) => (
                 <p key={index}>{err.message}</p>
               ))}

@@ -3,10 +3,11 @@ import { Suspense, lazy } from "react";
 import FAQ from "./components/FAQ";
 import { faq } from "./content/faq";
 import Services from "./components/Services";
+// import Posts from "./features/Posts";
 // import Hero from "./components/Hero";
 
 const Footer = lazy(() => import("./components/Footer"));
-const ContactForm = lazy(() => import("./components/ContactForm"));
+const ContactForm = lazy(() => import("./components/Form"));
 // const InstagramFeed = lazy(() => import("./components/InstagramFeed"));
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       <Suspense>
         <ContactForm />
       </Suspense>
+      {/* <Posts /> */}
 
       <Suspense>
         <Footer />
