@@ -3,7 +3,7 @@ import { Suspense, lazy } from "react";
 import FAQ from "./components/FAQ";
 import { faq } from "./content/faq";
 import Services from "./components/Services";
-// import Posts from "./features/Posts";
+import Posts from "./features/Posts";
 // import Hero from "./components/Hero";
 
 const Footer = lazy(() => import("./components/Footer"));
@@ -18,12 +18,12 @@ function App() {
       <FAQ data={faq} />
       {/* <InstagramFeed /> */}
 
-      <Suspense>
+      <Suspense fallback={null}>
         <ContactForm />
       </Suspense>
-      {/* <Posts /> */}
+      <Posts />
 
-      <Suspense>
+      <Suspense fallback={null}>
         <Footer />
       </Suspense>
     </>

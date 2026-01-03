@@ -56,8 +56,169 @@
     </script>
 
     <style>
+      /* Critical CSS - inlined for above-fold content */
+      /* Reset */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      body {
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        margin: 0;
+        padding: 0;
+      }
+      img,
+      picture,
+      video,
+      canvas,
+      svg {
+        display: block;
+        max-width: 100%;
+      }
+      input,
+      button,
+      textarea,
+      select {
+        font: inherit;
+      }
+      ul {
+        margin: 0;
+      }
+      p,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        overflow-wrap: break-word;
+      }
+
+      /* Base styles */
       :root {
+        font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+        line-height: 1.5;
+        font-weight: 400;
+        background-color: #242424;
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
         --nav-heigh: 70px;
+      }
+      html {
+        scroll-padding-top: 7rem;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background: #d9d9d9;
+        min-height: 100vh;
+        color: #1e1e1e;
+      }
+      a {
+        font-weight: 500;
+        color: rgb(225, 81, 43);
+        text-decoration: inherit;
+      }
+      a:hover {
+        color: hwb(237 33% 5%);
+      }
+      .hidden-sm {
+        display: none;
+      }
+      @media screen and (min-width: 600px) {
+        .hidden-sm {
+          display: initial;
+        }
+      }
+      .highlight {
+        color: rgb(255, 204, 143);
+      }
+      .h2 {
+        font-size: 1.5em;
+        text-shadow: #1e1e1e73 1px 1px 0px;
+        line-height: 108%;
+        max-width: 80vw;
+      }
+      @media screen and (min-width: 600px) {
+        .h2 {
+          font-size: 3.8em;
+          width: 50%;
+          max-width: 70vw;
+        }
+      }
+      .logo {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+        text-shadow: #232222f5 1px 2px 4px;
+        font-size: 18px;
+        color: #dfdfdfeb;
+      }
+      .logo span {
+        font-size: 10px;
+        font-weight: 200;
+        color: #ffcc8f;
+        display: block;
+      }
+      .btn {
+        text-align: center;
+        padding: 8px 15px;
+        text-decoration: none;
+        display: inline-block;
+        color: white;
+        border: 2px solid #ffcc8f;
+        border-radius: 10px;
+        transition: all 0.5s;
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        background: rgba(212, 175, 55, 0.1);
+      }
+      .content {
+        padding: 10px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      @media screen and (min-width: 600px) {
+        .content {
+          flex-direction: row;
+          width: 50%;
+          gap: 15px;
+        }
+      }
+      .set {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 11px;
+        font-weight: 300;
+        opacity: 0.5;
+        color: #d9d9d9;
+      }
+      .container {
+        padding: 2rem;
+      }
+      @media screen and (min-width: 600px) {
+        .container {
+          padding: 3rem;
+          padding-bottom: 0;
+          max-width: 1600px;
+          margin: 0 auto;
+          display: block;
+        }
+      }
+      @font-face {
+        font-family: "Oswald";
+        src: local("Oswald-Bold"),
+          url("/src/assets/fonts/Oswald/static/Oswald-Bold.ttf");
+        font-display: swap;
       }
 
       .nav.active .nav-overlay {
@@ -381,7 +542,14 @@
         padding: 0.8rem 1.5rem;
       }
     </style>
-    <link rel="stylesheet" href="/src/css/index.scss" />
+    <!-- Non-critical CSS loaded asynchronously -->
+    <link
+      rel="preload"
+      href="/src/css/index.scss"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript><link rel="stylesheet" href="/src/css/index.scss" /></noscript>
   </head>
   <body>
     <nav class="nav">
