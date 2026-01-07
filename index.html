@@ -83,6 +83,9 @@
       select {
         font: inherit;
       }
+      button {
+        border: none;
+      }
       ul {
         margin: 0;
       }
@@ -136,12 +139,7 @@
       .highlight {
         color: rgb(255, 204, 143);
       }
-      .h2 {
-        font-size: 1.5em;
-        text-shadow: #1e1e1e73 1px 1px 0px;
-        line-height: 108%;
-        max-width: 80vw;
-      }
+
       @media screen and (min-width: 600px) {
         .h2 {
           font-size: 3.8em;
@@ -345,173 +343,6 @@
         display: none;
       }
 
-      .hero {
-        display: flex;
-        padding: 0 1.5rem;
-        min-height: 70vh;
-        left: 0px;
-        top: 0px;
-        position: relative;
-        color: rgb(217, 217, 217);
-        overflow: hidden;
-        padding-top: 80px;
-        background: #070000;
-
-        @media screen and (min-width: 600px) {
-          padding: 0 3rem;
-        }
-      }
-
-      .hero-container {
-        margin: 0;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: flex-start;
-        width: 100%;
-
-        @media screen and (min-width: 600px) {
-          margin: 0 auto;
-          max-width: 1600px;
-          width: 100%;
-          padding-top: 100px;
-          padding-bottom: 300px;
-        }
-      }
-      .hero-tag {
-        border-radius: 50%;
-        background: #e1512b;
-        padding: 5px;
-        font-size: 11px;
-        max-width: 28vw;
-        aspect-ratio: 1;
-        display: flex;
-        align-items: center;
-        position: absolute;
-        text-align: center;
-        text-shadow: #1e1e1e73 1px 1px 0px;
-        bottom: 19%;
-        box-shadow: #00000030 1px 4px 2px;
-        z-index: 50;
-
-        @media screen and (min-width: 600px) {
-          max-width: 500px;
-          padding: 13px;
-          flex-direction: column;
-          justify-content: center;
-          bottom: 64%;
-          left: 54%;
-        }
-      }
-
-      .hero::before {
-        content: "";
-        z-index: -0;
-        position: absolute;
-        width: 100%;
-        height: 180%;
-        transform: translate(-5%, 5%);
-        top: -50%;
-        left: -10%;
-        background: radial-gradient(
-          54.87% 54.87% at 44.36% 65.36%,
-          #f78948 0%,
-          #e1512b 32.69%,
-          #070000 100%
-        );
-      }
-
-      .hero::after {
-        content: "";
-        z-index: -2;
-        position: absolute;
-        width: 150%;
-        height: 150%;
-        transform: translate(5%, 5%);
-        top: -10%;
-        left: -10%;
-        background: #070000 100%;
-      }
-      .hero-text {
-        position: absolute;
-        bottom: -0.1rem;
-        font-family: "Oswald", sans-serif;
-        font-optical-sizing: auto;
-        font-weight: 700;
-        font-style: normal;
-        text-transform: uppercase;
-        font-size: 13vw;
-        line-height: 90%;
-        letter-spacing: -2px;
-        left: 0;
-        right: 0;
-        overflow: hidden;
-        width: 100%;
-
-        @media screen and (min-width: 600px) {
-          font-size: 9.5vmax;
-          max-width: 1600px;
-          margin: 0 auto;
-          max-height: 300px;
-        }
-      }
-
-      .hero-text p {
-        position: relative;
-        z-index: 50;
-
-        @media screen and (min-width: 600px) {
-          z-index: 99;
-        }
-      }
-
-      .hero-text .dark {
-        color: #1e1e1e;
-        font-size: 14vw;
-        position: relative;
-        z-index: 10;
-        font-size: 2.6rem;
-
-        @media screen and (min-width: 600px) {
-          font-size: 9.5rem;
-        }
-      }
-
-      .hero-text .outline {
-        color: #1e1e1e00;
-        -webkit-text-stroke: 0.04em #1e1e1e;
-
-        @media screen and (min-width: 600px) {
-          -webkit-text-stroke: 0.02em #1e1e1e9f;
-        }
-      }
-      hero-text p {
-        margin: 0;
-      }
-
-      .hero-image {
-        width: 100%;
-        position: absolute;
-        bottom: 0;
-        right: -35%;
-        height: 75%;
-        z-index: 20;
-
-        @media screen and (min-width: 600px) {
-          right: -5%;
-          height: 95%;
-          z-index: 90;
-          width: auto;
-        }
-      }
-
-      .hero-image img {
-        object-fit: contain;
-        width: 100%;
-        height: 100%;
-      }
-
       .nav {
         --_bg: rgba(255, 255, 255, 0.05);
 
@@ -543,13 +374,27 @@
       }
     </style>
     <!-- Non-critical CSS loaded asynchronously -->
-    <link
+    <!-- <link
       rel="preload"
       href="/src/css/index.scss"
       as="style"
       onload="this.onload=null;this.rel='stylesheet'"
+    /> -->
+    <!-- <noscript><link rel="stylesheet" href="/src/css/index.scss" /></noscript> -->
+    <!-- Preload hero image for LCP optimization -->
+    <link
+      rel="preload"
+      as="image"
+      fetchpriority="high"
+      href="/assets/carol-almeida-personal-trainer-large-2x.png"
+      imagesrcset="
+        /assets/carol-almeida-personal-trainer-large-2x_640.avif 640w,
+        /assets/carol-almeida-personal-trainer-large-2x_1024.avif 1024w,
+        /assets/carol-almeida-personal-trainer-large-2x_2048.avif 2048w
+      "
+      imagesizes="(min-width: 800px) 50vw, 40vw"
+      type="image/avif"
     />
-    <noscript><link rel="stylesheet" href="/src/css/index.scss" /></noscript>
   </head>
   <body>
     <nav class="nav">
@@ -571,19 +416,27 @@
           <li><a href="#contact" role="button">Contact</a></li>
         </ul>
         <p class="set">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            fill="none"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-          >
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0" />
-            <circle cx="12" cy="10" r="3" />
-          </svg>
+          <span
+            style="
+              height: 18px; /* control the size */
+              aspect-ratio: 2/3;
+              margin-right: 5px;
+              mask: conic-gradient(
+                    from -30deg at bottom,
+                    #0000,
+                    #000 1deg 59deg,
+                    #0000 60deg
+                  )
+                  bottom/100% 50% no-repeat,
+                radial-gradient(
+                  circle at 50% calc(100% / 3),
+                  #0000 21.5%,
+                  #000 22% 44%,
+                  #0000 44.5%
+                );
+              background: #ebebeb;
+            "
+          ></span>
           <span>Downtown Vancouver</span>
         </p>
         <div class="nav-overlay-menutriger">
@@ -596,121 +449,6 @@
       <div class="nav-overlay"></div>
     </nav>
 
-    <section class="hero">
-      <div class="hero-container">
-        <h1 class="hero-tag">
-          Personal Trainer
-          <span class="hidden-sm"> Fitness Couch</span> +20 years of experience
-        </h1>
-
-        <h2 class="h2">
-          Transform <span class="highlight">Your Life </span>with Customized
-          <span>1-on-1 </span>
-          <span class="highlight">Personal Training</span>.
-        </h2>
-        <div class="content">
-          <a
-            href="sms:+17783029893?body=I'm%20interested%20in%20personal%20training"
-            class="btn"
-            aria-label="Text Carolina Simoes about personal training anf fitnes coach"
-            >+1 778 302 9893</a
-          >
-          <a
-            href="#contact"
-            class="what btn"
-            aria-label="Conatct Carolina Simoes about personal training anf fitnes coach"
-          >
-            Contact
-          </a>
-        </div>
-        <picture class="hero-image">
-          <source
-            srcset="
-              /src/assets/images/carol-almeida-personal-trainer-large-BMYEoKfR.webp
-            "
-            type="image/webp"
-          />
-          <source
-            srcset="
-              /src/assets/images/carol-almeida-personal-trainer-large-BMYEoKfR.jpg
-            "
-            type="image/jpeg"
-          />
-          <img
-            fetchpriority="high"
-            alt="Personal Trainer Carolina Almeida"
-            src="/src/assets/images/carol-almeida-personal-trainer-large-BMYEoKfR.png"
-            srcset="
-              /src/assets/images/carol-almeida-personal-trainer-small.png           400w,
-              /src/assets/images/carol-almeida-personal-trainer-small.png           800w,
-              /src/assets/images/carol-almeida-personal-trainer-large-BMYEoKfR.png 1600w
-            "
-          />
-        </picture>
-      </div>
-
-      <div class="hero-text">
-        <p class="dark">Fitness.<span class="outline">Vancouver</span></p>
-        <p>Personal Trainer</p>
-      </div>
-    </section>
-    <section class="container">
-      <h3>
-        Achieve your fitness goals with a personalized plan tailored to your
-        needs and limitations.<br />
-        Prioritize your health, build confidence, and live life to the fullest.
-      </h3>
-      <p>
-        Transform your fitness journey with personalized training sessions
-        designed just for you! Our tailored workouts ensure efficient progress,
-        and our meticulous progress tracking keeps you on the path to success.
-        Ready to take the first step? Schedule your free consultation now and
-        let's achieve your fitness goals together.
-      </p>
-      <h2 id="about-carolina-almeida">About Me - Carol Almeida</h2>
-      <p>
-        Hi, I'm Carol Almeida, a results-driven personal trainer with over 20
-        years of experience helping people transform their lives through
-        fitness. I specialize in 1-on-1 personal training and customized fitness
-        programs for individuals who value their time and want real, lasting
-        results.
-      </p>
-      <p>
-        My approach combines deep expertise with genuine care. Every client is
-        unique, so I design programs around your goals, fitness level, mobility,
-        and lifestyle—ensuring that you not only look better but also move,
-        feel, and live better.
-      </p>
-      <p>
-        I hold a Master's in Sport Training and a Bachelor's in Physical
-        Education, and I'm an ACE Certified Personal Trainer and Fitness
-        Nutrition Specialist. With certifications in CrossFit Level 1 and years
-        of experience coaching both in-person and online, I blend science with
-        proven coaching strategies to deliver measurable, lasting change.
-      </p>
-      <h2>Expertise & Specialties</h2>
-      <ul>
-        <li>1-on-1 Personal Training</li>
-        <li>Customized Fitness Programming</li>
-        <li>Weight Loss & Body Composition</li>
-        <li>Strength & Conditioning</li>
-        <li>Exercise Selection & Modification for Aging Athletes</li>
-        <li>Mobility & Movement Quality</li>
-        <li>Nutrition Guidance for Performance & Longevity</li>
-      </ul>
-
-      <article class="section">
-        <h2 id="personal-training-dowtown-vancouver">
-          Personal Training Services
-        </h2>
-        <p>
-          Whether your goal is weight loss, improved performance, or simply
-          feeling great again, every session is tailored to your needs —
-          combining expert coaching, accountability, and motivation. Train in
-          person in Vancouver or with online support that fits your schedule.
-        </p>
-      </article>
-    </section>
     <div id="root"></div>
 
     <script>

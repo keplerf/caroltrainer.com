@@ -2,6 +2,8 @@ import parse from "html-react-parser";
 import { ChevronDown } from "react-feather";
 import styles from "./FAQ.module.scss";
 
+import { faq } from "../../content/faq";
+
 function FAQItem({ question, answer }) {
   return (
     <details className={styles.item}>
@@ -14,7 +16,7 @@ function FAQItem({ question, answer }) {
   );
 }
 
-export default function FAQ({ data }) {
+export default function FAQ() {
   return (
     <section className={styles.wrapper} id="faq" aria-labelledby="faq-heading">
       <div className={styles.container}>
@@ -22,7 +24,7 @@ export default function FAQ({ data }) {
           Frequently Asked Questions
         </h2>
         <div className={styles.list}>
-          {data.map((item) => (
+          {faq.map((item) => (
             <FAQItem
               key={item.id}
               question={item.question}

@@ -1,5 +1,6 @@
 import { Check, User, Clipboard, Users } from "react-feather";
 import styles from "./Services.module.scss";
+import Button from "../Atoms/Button";
 
 const content = [
   {
@@ -114,13 +115,13 @@ const Services = () => {
               </h3>
               <p className={styles.cardText}>{service.text}</p>
               <ServiceList list={service.list} />
-              <a
+              <Button
                 href={`#contact?service=${service.id}`}
-                className={styles.cardCta}
+                appearance={service.highlight ? "primary" : "secondary"}
                 onClick={(e) => handleCtaClick(e, service.id)}
               >
                 Get Started
-              </a>
+              </Button>
             </article>
           ))}
         </div>

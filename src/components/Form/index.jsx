@@ -3,6 +3,7 @@ import axios from "axios";
 import styles from "./ContactForm.module.scss";
 import { FormField } from "./FormField";
 import { useGetParamsFromURL } from "/src/hooks/useGetParamsFromURL";
+import Button from "../Atoms/Button";
 
 const SERVER_POST = "https://www.caroltrainer.com/app/contact.php";
 
@@ -357,13 +358,9 @@ export default function ContactForm() {
             </div>
           )}
 
-          <button
-            className={styles.button}
-            type="submit"
-            disabled={honeypotStatus || isSubmitting}
-          >
+          <Button full type="submit" disabled={honeypotStatus || isSubmitting}>
             {isSubmitting ? "Sending..." : "Send Message"}
-          </button>
+          </Button>
         </form>
       </div>
     </section>

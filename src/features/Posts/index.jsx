@@ -1,7 +1,29 @@
-import { useState, useEffect } from "react";
+import { useCallback } from "react";
+import { Link } from "react-router-dom";
+import {
+  useQuery,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
 import styles from "./Posts.module.scss";
 
+const queryClient = new QueryClient();
 const API_URL = "https://www.caroltrainer.com/wp-json/wp/v2/posts";
+
+async function fetchPosts() {
+  const response = await fetch(`${API_URL}?_embed&per_page=6`);
+  if (!response.ok) throw new Error("Failed to fetch posts");
+  return response.json();
+}
+
+async function fetchPost(slug) {
+  const response = await fetch(`${API_URL}?slug=${slug}&_embed`);
+  if (!response.ok) throw new Error("Failed to fetch post");
+  const data = await response.json();
+  if (data.length === 0) throw new Error("Post not found");
+  return data[0];
+}
 
 function formatDate(dateString) {
   return new Date(dateString).toLocaleDateString("en-US", {
@@ -17,68 +39,64 @@ function stripHtml(html) {
 }
 
 function PostCard({ post }) {
+  const queryClient = useQueryClient();
   const excerpt = stripHtml(post.excerpt.rendered).slice(0, 150) + "...";
 
+  const handlePrefetch = useCallback(() => {
+    queryClient.prefetchQuery({
+      queryKey: ["post", post.slug],
+      queryFn: () => fetchPost(post.slug),
+      staleTime: 5 * 60 * 1000,
+    });
+  }, [queryClient, post.slug]);
+
   return (
-    <article className={styles.card}>
+    <article
+      className={styles.card}
+      onMouseEnter={handlePrefetch}
+      onFocus={handlePrefetch}
+    >
       {post._embedded?.["wp:featuredmedia"]?.[0]?.source_url && (
-        <div className={styles.imageWrapper}>
+        <Link to={`/blog/${post.slug}`} className={styles.imageWrapper}>
           <img
             src={post._embedded["wp:featuredmedia"][0].source_url}
-            alt={post._embedded["wp:featuredmedia"][0].alt_text || post.title.rendered}
+            alt={
+              post._embedded["wp:featuredmedia"][0].alt_text ||
+              post.title.rendered
+            }
             className={styles.image}
             loading="lazy"
           />
-        </div>
+        </Link>
       )}
       <div className={styles.content}>
         <time className={styles.date} dateTime={post.date}>
           {formatDate(post.date)}
         </time>
         <h3 className={styles.cardTitle}>
-          <a href={post.link} target="_blank" rel="noopener noreferrer">
-            {post.title.rendered}
-          </a>
+          <Link to={`/blog/${post.slug}`}>{post.title.rendered}</Link>
         </h3>
         <p className={styles.excerpt}>{excerpt}</p>
-        <a
-          href={post.link}
-          className={styles.readMore}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <Link to={`/blog/${post.slug}`} className={styles.readMore}>
           Read More
-        </a>
+        </Link>
       </div>
     </article>
   );
 }
 
-export default function Posts() {
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+function PostsContent() {
+  const {
+    data: posts,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["posts"],
+    queryFn: fetchPosts,
+    staleTime: 5 * 60 * 1000,
+  });
 
-  useEffect(() => {
-    async function fetchPosts() {
-      try {
-        const response = await fetch(`${API_URL}?_embed&per_page=6`);
-        if (!response.ok) {
-          throw new Error("Failed to fetch posts");
-        }
-        const data = await response.json();
-        setPosts(data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchPosts();
-  }, []);
-
-  if (loading) {
+  if (isLoading) {
     return (
       <section className={styles.wrapper} id="blog">
         <div className={styles.container}>
@@ -103,12 +121,16 @@ export default function Posts() {
     );
   }
 
-  if (posts.length === 0) {
+  if (!posts || posts.length === 0) {
     return null;
   }
 
   return (
-    <section className={styles.wrapper} id="blog" aria-labelledby="blog-heading">
+    <section
+      className={styles.wrapper}
+      id="blog"
+      aria-labelledby="blog-heading"
+    >
       <div className={styles.container}>
         <header className={styles.header}>
           <h2 id="blog-heading" className={styles.title}>
@@ -137,5 +159,13 @@ export default function Posts() {
         </div>
       </div>
     </section>
+  );
+}
+
+export default function Posts() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <PostsContent />
+    </QueryClientProvider>
   );
 }
