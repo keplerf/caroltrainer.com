@@ -1,29 +1,26 @@
-import { useCallback } from "react";
+import { use, Suspense } from "react";
 import { Link } from "react-router-dom";
-import {
-  useQuery,
-  useQueryClient,
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query";
-import styles from "./Posts.module.scss";
 
-const queryClient = new QueryClient();
+import styles from "./Posts.module.scss";
+import { getImageSrcSet } from "../../helpers/getImageSrcSet";
+import { ResponsiveImage } from "@responsive-image/react";
 const API_URL = "https://www.caroltrainer.com/wp-json/wp/v2/posts";
 
 async function fetchPosts() {
   const response = await fetch(`${API_URL}?_embed&per_page=6`);
-  if (!response.ok) throw new Error("Failed to fetch posts");
   return response.json();
 }
 
-async function fetchPost(slug) {
+// Cache the promise at module level - called once when module loads
+const postsPromise = fetchPosts();
+
+const fetchPost = async (slug) => {
   const response = await fetch(`${API_URL}?slug=${slug}&_embed`);
   if (!response.ok) throw new Error("Failed to fetch post");
   const data = await response.json();
   if (data.length === 0) throw new Error("Post not found");
   return data[0];
-}
+};
 
 function formatDate(dateString) {
   return new Date(dateString).toLocaleDateString("en-US", {
@@ -39,16 +36,13 @@ function stripHtml(html) {
 }
 
 function PostCard({ post }) {
-  const queryClient = useQueryClient();
   const excerpt = stripHtml(post.excerpt.rendered).slice(0, 150) + "...";
 
-  const handlePrefetch = useCallback(() => {
-    queryClient.prefetchQuery({
-      queryKey: ["post", post.slug],
-      queryFn: () => fetchPost(post.slug),
-      staleTime: 5 * 60 * 1000,
-    });
-  }, [queryClient, post.slug]);
+  const handlePrefetch = () => {
+    fetchPost(post.slug);
+  };
+  const featuredImage = post._embedded?.["wp:featuredmedia"]?.[0];
+  const srcSet = getImageSrcSet(featuredImage);
 
   return (
     <article
@@ -59,13 +53,17 @@ function PostCard({ post }) {
       {post._embedded?.["wp:featuredmedia"]?.[0]?.source_url && (
         <Link to={`/blog/${post.slug}`} className={styles.imageWrapper}>
           <img
-            src={post._embedded["wp:featuredmedia"][0].source_url}
+            src={featuredImage.source_url}
+            srcSet={srcSet}
             alt={
               post._embedded["wp:featuredmedia"][0].alt_text ||
               post.title.rendered
             }
+            sizes="(max-width: 768px) 50vw, 200px"
             className={styles.image}
             loading="lazy"
+            width={featuredImage.media_details?.width}
+            height={featuredImage.media_details?.height}
           />
         </Link>
       )}
@@ -86,44 +84,7 @@ function PostCard({ post }) {
 }
 
 function PostsContent() {
-  const {
-    data: posts,
-    isLoading,
-    error,
-  } = useQuery({
-    queryKey: ["posts"],
-    queryFn: fetchPosts,
-    staleTime: 5 * 60 * 1000,
-  });
-
-  if (isLoading) {
-    return (
-      <section className={styles.wrapper} id="blog">
-        <div className={styles.container}>
-          <div className={styles.loading}>
-            <div className={styles.spinner} />
-            <p>Loading posts...</p>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  if (error) {
-    return (
-      <section className={styles.wrapper} id="blog">
-        <div className={styles.container}>
-          <div className={styles.error}>
-            <p>Unable to load posts. Please try again later.</p>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  if (!posts || posts.length === 0) {
-    return null;
-  }
+  const data = use(postsPromise);
 
   return (
     <section
@@ -142,7 +103,7 @@ function PostsContent() {
         </header>
 
         <div className={styles.grid}>
-          {posts.map((post) => (
+          {data.map((post) => (
             <PostCard key={post.id} post={post} />
           ))}
         </div>
@@ -164,8 +125,8 @@ function PostsContent() {
 
 export default function Posts() {
   return (
-    <QueryClientProvider client={queryClient}>
+    <Suspense fallback={<h2>Loading ....</h2>}>
       <PostsContent />
-    </QueryClientProvider>
+    </Suspense>
   );
 }

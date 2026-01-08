@@ -1,16 +1,23 @@
+import { use, Suspense } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft } from "react-feather";
 import parse from "html-react-parser";
-import {
-  useQuery,
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query";
-import styles from "./PostPage.module.scss";
-import { ResponsiveImage } from "@responsive-image/react";
 
-const queryClient = new QueryClient();
+import { getImageSrcSet } from "../../helpers/getImageSrcSet";
+
+import styles from "./PostPage.module.scss";
+
 const API_URL = "https://www.caroltrainer.com/wp-json/wp/v2/posts";
+
+// Cache promises by slug to avoid refetching
+const postPromises = new Map();
+
+function getPostPromise(slug) {
+  if (!postPromises.has(slug)) {
+    postPromises.set(slug, fetchPost(slug));
+  }
+  return postPromises.get(slug);
+}
 
 async function fetchPost(slug) {
   const response = await fetch(`${API_URL}?slug=${slug}&_embed`);
@@ -30,49 +37,10 @@ function formatDate(dateString) {
 
 function PostPageContent() {
   const { slug } = useParams();
-
-  const {
-    data: post,
-    isLoading,
-    error,
-  } = useQuery({
-    queryKey: ["post", slug],
-    queryFn: () => fetchPost(slug),
-    enabled: !!slug,
-    staleTime: 5 * 60 * 1000,
-  });
-
-  if (isLoading) {
-    return (
-      <div className={styles.wrapper}>
-        <div className={styles.container}>
-          <div className={styles.loading}>
-            <div className={styles.spinner} />
-            <p>Loading article...</p>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (error || !post) {
-    return (
-      <div className={styles.wrapper}>
-        <div className={styles.container}>
-          <div className={styles.error}>
-            <h1>Article Not Found</h1>
-            <p>Sorry, we couldn't find the article you're looking for.</p>
-            <Link to="/" className={styles.backLink}>
-              <ArrowLeft size={18} />
-              Back to Home
-            </Link>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  const post = use(getPostPromise(slug));
 
   const featuredImage = post._embedded?.["wp:featuredmedia"]?.[0];
+  const srcSet = getImageSrcSet(featuredImage);
 
   return (
     <article className={styles.wrapper}>
@@ -95,7 +63,11 @@ function PostPageContent() {
           <div className={styles.featuredImage}>
             <img
               src={featuredImage.source_url}
+              srcSet={srcSet}
+              sizes="(max-width: 768px) 500vw, 200px"
               alt={featuredImage.alt_text || post.title.rendered}
+              width={featuredImage.media_details?.width}
+              height={featuredImage.media_details?.height}
             />
           </div>
         )}
@@ -113,10 +85,23 @@ function PostPageContent() {
   );
 }
 
+function PostPageLoading() {
+  return (
+    <div className={styles.wrapper}>
+      <div className={styles.container}>
+        <div className={styles.loading}>
+          <div className={styles.spinner} />
+          <p>Loading article...</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function PostPage() {
   return (
-    <QueryClientProvider client={queryClient}>
+    <Suspense fallback={<PostPageLoading />}>
       <PostPageContent />
-    </QueryClientProvider>
+    </Suspense>
   );
 }

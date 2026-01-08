@@ -5,7 +5,7 @@ import Hero from "./components/Hero";
 
 import ContainerHero from "./components/Hero/Container";
 
-// import Posts from "./features/Posts";
+import Posts from "./features/Posts";
 
 const FAQ = lazy(() => import("./components/FAQ"));
 
@@ -31,7 +31,9 @@ function HomePage() {
       <Suspense fallback={null}>
         <ContactForm />
       </Suspense>
-      {/* <Posts /> */}
+      <Suspense fallback={null}>
+        <Posts />
+      </Suspense>
 
       <Suspense fallback={null}>
         <Footer />
