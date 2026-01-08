@@ -5,7 +5,7 @@
   background: transparent;
   border-radius: 8px;
   font-weight: 600;
-  font-size: 0.9375rem;
+  font-size: 1rem;
   text-decoration: none;
   transition: all 0.2s ease;
   margin-top: auto;
@@ -21,7 +21,7 @@
   }
 
   &.primary {
-    background: #f78948;
+    background: #b74502;
     color: white;
 
     &:hover {
@@ -33,7 +33,7 @@
 
   &.secondary {
     background: #ffffff;
-    color: #f78948;
+    color: #c7520e;
     border: 2px solid #f78948;
 
     &:hover {

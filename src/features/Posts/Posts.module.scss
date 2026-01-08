@@ -22,7 +22,7 @@
 
 .subtitle {
   font-size: 1.125rem;
-  color: #6c757d;
+  color: #34393d;
   margin: 0;
   line-height: 1.6;
 }
@@ -81,7 +81,7 @@
 
 .date {
   font-size: 0.8125rem;
-  color: #6c757d;
+  color: #3c4145;
   margin-bottom: 0.5rem;
 }
 
@@ -104,7 +104,7 @@
 
 .excerpt {
   font-size: 0.9375rem;
-  color: #6c757d;
+  color: #3c4044;
   line-height: 1.6;
   margin: 0 0 1rem;
   flex-grow: 1;
@@ -114,7 +114,7 @@
   display: inline-block;
   font-size: 0.9375rem;
   font-weight: 500;
-  color: #f78948;
+  color: #a5440c;
   text-decoration: none;
   transition: color 0.2s ease;
 
@@ -127,24 +127,6 @@
 .cta {
   text-align: center;
   margin-top: 3rem;
-}
-
-.viewAll {
-  display: inline-block;
-  padding: 0.875rem 2rem;
-  background: transparent;
-  color: #f78948;
-  border: 2px solid #f78948;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 1rem;
-  text-decoration: none;
-  transition: all 0.2s ease;
-
-  &:hover {
-    background: #f78948;
-    color: white;
-  }
 }
 
 .loading,

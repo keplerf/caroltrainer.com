@@ -1,6 +1,6 @@
 import { use, Suspense } from "react";
 import { Link } from "react-router-dom";
-
+import Button from "../../components/Atoms/Button";
 import styles from "./Posts.module.scss";
 import { getImageSrcSet } from "../../helpers/getImageSrcSet";
 import { ResponsiveImage } from "@responsive-image/react";
@@ -109,14 +109,14 @@ function PostsContent() {
         </div>
 
         <div className={styles.cta}>
-          <a
+          <Button
+            appearance="secondary"
             href="https://www.caroltrainer.com/blog"
-            className={styles.viewAll}
             target="_blank"
             rel="noopener noreferrer"
           >
             View All Articles
-          </a>
+          </Button>
         </div>
       </div>
     </section>
