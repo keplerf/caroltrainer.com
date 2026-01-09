@@ -353,6 +353,10 @@
   aspect-ratio: 1/1.7;
   z-index: 20;
 
+  & > * {
+    display: flex;
+  }
+
   & * {
     margin: 0 auto;
     justify-content: center;

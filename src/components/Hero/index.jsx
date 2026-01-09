@@ -92,10 +92,8 @@ export default function Hero() {
             src={imageLarge}
             alt="Personal Trainer Carolina Almeida Downtown Vancouver"
             className={styles.overlayImage}
-            sizes="(min-width: 800px) 50vw, 40vw"
+            sizes="(max-width: 800px) 40vw, 10vw"
             loading="eager"
-            width={50}
-            height={50}
           />
         </div>
       </div>

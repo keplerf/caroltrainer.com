@@ -4,25 +4,28 @@ import { Routes, Route } from "react-router-dom";
 import Hero from "./components/Hero";
 
 import ContainerHero from "./components/Hero/Container";
-
-import Posts from "./features/Posts";
-
+const Cards = lazy(() => import("./components/features/Cards"));
 const FAQ = lazy(() => import("./components/FAQ"));
-
 const Footer = lazy(() => import("./components/Footer"));
 const ContactForm = lazy(() => import("./components/Form"));
-const PostPage = lazy(() => import("./features/Posts/PostPage"));
+const PostPage = lazy(() => import("./components/features/Posts/PostPage"));
 const Services = lazy(() => import("./components/Services"));
+const Posts = lazy(() => import("./components/features/Posts"));
 // const InstagramFeed = lazy(() => import("./components/InstagramFeed"));
 
 function HomePage() {
   return (
     <>
       <Hero />
+
       <ContainerHero />
+      <Suspense fallback={null}>
+        <Cards />
+      </Suspense>
       <Suspense fallback={null}>
         <Services />
       </Suspense>
+
       <Suspense fallback={null}>
         <FAQ />
       </Suspense>

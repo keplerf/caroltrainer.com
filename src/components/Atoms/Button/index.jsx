@@ -1,5 +1,6 @@
 import styles from "./Button.module.scss";
-import parse from "html-react-parser";
+
+import { motion, useAnimationFrame } from "motion/react";
 
 const Button = ({
   appearance = "primary",
@@ -7,18 +8,23 @@ const Button = ({
   full = false,
   href,
   children,
+  stifness = 300,
+  damping = 15,
   ...props
 }) => {
   const ButtonAs = href ? "a" : "button";
 
   return (
-    <ButtonAs
+    <motion.ButtonAs
+      whileHover={{ scale: 1.05, y: -2 }}
+      whileTap={{ scale: 0.9, y: 1 }}
+      transition={{ type: "spring", stifness, damping }}
       href={href}
       className={`${styles.btn} ${styles[appearance]} ${full && styles.full}`}
       {...props}
     >
-      <span>{parse(children)} </span>
-    </ButtonAs>
+      <span>{children} </span>
+    </motion.ButtonAs>
   );
 };
 

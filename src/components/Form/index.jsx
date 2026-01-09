@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import styles from "./ContactForm.module.scss";
 import { FormField } from "./FormField";
 import { useGetParamsFromURL } from "/src/hooks/useGetParamsFromURL";

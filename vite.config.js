@@ -25,7 +25,7 @@ export default defineConfig({
     setupPlugins({
       name: "[name]_[width].[ext]",
       include: /^[^?]+\.(jpg|jpeg|png|webp)\?.*responsive.*$/,
-      w: [640, 1024, 2048],
+      w: [300, 640, 1024, 2048],
       format: ["original", "webp", "avif"],
     }),
     ViteImageOptimizer({
