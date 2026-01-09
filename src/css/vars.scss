@@ -1,0 +1,9 @@
+:root {
+  --main-color: #1f1f1f73;
+  --orange-dark: #e05a00;
+  --light-color: rgb(229, 229, 229);
+  --orange-light: rgb(255, 204, 143)
+
+  --text-color: var(--main-color);
+  --accent-color:var(var(--orange-dark))
+}

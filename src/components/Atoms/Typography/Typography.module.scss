@@ -1,0 +1,11 @@
+@import url(../../../css/vars.scss);
+@import url(../../../css/typography.scss);
+
+.typography {
+  color: var(--text-color);
+}
+
+.invert {
+  --text-color: var(--light-color);
+  text-shadow: var(--main-color) 1px 1px 0px;
+}

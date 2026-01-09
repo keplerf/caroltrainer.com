@@ -7,8 +7,6 @@ import { getImageSrcSet } from "../../../helpers/getImageSrcSet";
 
 import styles from "./PostPage.module.scss";
 
-const API_URL = "https://www.caroltrainer.com/wp-json/wp/v2/posts";
-
 // Cache promises by slug to avoid refetching
 const postPromises = new Map();
 
@@ -20,7 +18,7 @@ function getPostPromise(slug) {
 }
 
 async function fetchPost(slug) {
-  const response = await fetch(`${API_URL}?slug=${slug}&_embed`);
+  const response = await fetch(`${mport.meta.env.API_URL}?slug=${slug}&_embed`);
   if (!response.ok) throw new Error("Failed to fetch post");
   const data = await response.json();
   if (data.length === 0) throw new Error("Post not found");

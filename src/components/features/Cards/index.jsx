@@ -4,6 +4,7 @@ import { ResponsiveImage } from "@responsive-image/react";
 import Button from "../../Atoms/Button";
 import styles from "./Cards.module.scss";
 import handleScrolTo from "../../../helpers/handleScrollTo";
+import Typography from "../../Atoms/Typography";
 
 import imageLarge from "../../../../src/assets/images/02.png?responsive";
 import img01 from "../../../../src/assets/images/01.jpg?responsive";
@@ -117,10 +118,10 @@ const Cards = () => {
         </motion.div>
       </div>
       <div>
-        <h3>
+        <Typography as="h3" invert>
           Personal Training Built Around Your Life,
           <br /> Not the Other Way Around
-        </h3>
+        </Typography>
         <Button
           href="#contact"
           appearance="outline"
