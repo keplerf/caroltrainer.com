@@ -4,10 +4,10 @@ import Button from "../../Atoms/Button";
 import styles from "./Posts.module.scss";
 import { getImageSrcSet } from "../../../helpers/getImageSrcSet";
 
-const API_URL = "https://www.caroltrainer.com/wp-json/wp/v2/posts";
-
 async function fetchPosts() {
-  const response = await fetch(`${API_URL}?_embed&per_page=6`);
+  const response = await fetch(
+    `${import.meta.env.VITE_API_URL}?_embed&per_page=6`
+  );
   return response.json();
 }
 
@@ -15,7 +15,9 @@ async function fetchPosts() {
 const postsPromise = fetchPosts();
 
 const fetchPost = async (slug) => {
-  const response = await fetch(`${API_URL}?slug=${slug}&_embed`);
+  const response = await fetch(
+    `${import.meta.env.VITE_API_URL}?slug=${slug}&_embed`
+  );
   if (!response.ok) throw new Error("Failed to fetch post");
   const data = await response.json();
   if (data.length === 0) throw new Error("Post not found");

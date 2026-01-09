@@ -18,7 +18,9 @@ function getPostPromise(slug) {
 }
 
 async function fetchPost(slug) {
-  const response = await fetch(`${mport.meta.env.API_URL}?slug=${slug}&_embed`);
+  const response = await fetch(
+    `${import.meta.env.VITE_API_URL}?slug=${slug}&_embed`
+  );
   if (!response.ok) throw new Error("Failed to fetch post");
   const data = await response.json();
   if (data.length === 0) throw new Error("Post not found");
