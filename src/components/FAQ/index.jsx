@@ -1,17 +1,37 @@
+// import React, { useState } from "react";
 import parse from "html-react-parser";
 import { ChevronDown } from "react-feather";
+import Typography from "../Atoms/Typography";
 import styles from "./FAQ.module.scss";
 
 import { faq } from "../../content/faq";
+
+// Compount Component Pattern
+
+// function FAQCustomItem({ children }) {
+//   const [on, setOn] = useState(false);
+//   const toggle = () => setOn(!on);
+
+//   return React.Children.map(children, (child) => {
+//     if (typeof child === "string") {
+//       return child;
+//     }
+//     const newChild = React.cloneElement(child, [on, toggle]);
+//     return newChild;
+//   });
+// }
 
 function FAQItem({ question, answer }) {
   return (
     <details className={styles.item}>
       <summary className={styles.question}>
-        <span>{question}</span>
+        <Typography as="span">{question}</Typography>
         <ChevronDown size={20} className={styles.icon} aria-hidden="true" />
       </summary>
-      <div className={styles.answer}>{parse(answer)}</div>
+
+      <Typography as="div" className={styles.answer}>
+        {parse(answer)}
+      </Typography>
     </details>
   );
 }
@@ -20,10 +40,11 @@ export default function FAQ() {
   return (
     <section className={styles.wrapper} id="faq" aria-labelledby="faq-heading">
       <div className={styles.container}>
-        <h2 id="faq-heading" className={styles.title}>
+        <Typography as="h2" id="faq-heading" center>
           Frequently Asked Questions
-        </h2>
+        </Typography>
         <div className={styles.list}>
+          {/* <FAQCustomItem> */}
           {faq.map((item) => (
             <FAQItem
               key={item.id}
@@ -31,6 +52,7 @@ export default function FAQ() {
               answer={item.answer}
             />
           ))}
+          {/* </FAQCustomItem> */}
         </div>
       </div>
     </section>

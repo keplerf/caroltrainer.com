@@ -8,14 +8,6 @@
   margin: 0 auto;
 }
 
-.title {
-  font-size: clamp(1.75rem, 4vw, 2.25rem);
-  font-weight: 700;
-  color: #1a1a2e;
-  text-align: center;
-  margin: 0 0 2.5rem;
-}
-
 .list {
   display: flex;
   flex-direction: column;
@@ -53,8 +45,7 @@
   gap: 1rem;
   padding: 1.25rem 1.5rem;
   cursor: pointer;
-  font-size: 1rem;
-  font-weight: 500;
+
   color: #1a1a2e;
   list-style: none;
   transition: background-color 0.2s ease;
@@ -75,10 +66,6 @@
     outline: 2px solid #f78948;
     outline-offset: -2px;
   }
-
-  span {
-    flex: 1;
-  }
 }
 
 .icon {
@@ -89,8 +76,6 @@
 
 .answer {
   padding: 1.25rem 1.5rem;
-  color: #495057;
-  line-height: 1.7;
 
   p {
     margin: 0 0 1rem;
@@ -127,11 +112,9 @@
 
   .question {
     padding: 1rem 1.25rem;
-    font-size: 0.9375rem;
   }
 
   .answer {
     padding: 1rem 1.25rem;
-    font-size: 0.9375rem;
   }
 }

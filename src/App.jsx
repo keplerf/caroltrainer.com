@@ -1,9 +1,9 @@
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useContext, useState } from "react";
 import { Routes, Route } from "react-router-dom";
-
+import { ThemeContextProvider } from "./hooks/useTheme";
 import Hero from "./components/Hero";
-
 import ContainerHero from "./components/Hero/Container";
+
 const Cards = lazy(() => import("./components/features/Cards"));
 const FAQ = lazy(() => import("./components/FAQ"));
 const Footer = lazy(() => import("./components/Footer"));
@@ -11,11 +11,10 @@ const ContactForm = lazy(() => import("./components/Form"));
 const PostPage = lazy(() => import("./components/features/Posts/PostPage"));
 const Services = lazy(() => import("./components/Services"));
 const Posts = lazy(() => import("./components/features/Posts"));
-// const InstagramFeed = lazy(() => import("./components/InstagramFeed"));
 
 function HomePage() {
   return (
-    <>
+    <ThemeContextProvider>
       <Hero />
 
       <ContainerHero />
@@ -41,7 +40,7 @@ function HomePage() {
       <Suspense fallback={null}>
         <Footer />
       </Suspense>
-    </>
+    </ThemeContextProvider>
   );
 }
 

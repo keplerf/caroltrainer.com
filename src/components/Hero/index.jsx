@@ -4,10 +4,14 @@ import { ResponsiveImage } from "@responsive-image/react";
 import imageLarge from "../../../src/assets/images/carol-almeida-personal-trainer-large-2x.png?responsive";
 import Button from "../Atoms/Button";
 import handleScrolTo from "../../helpers/handleScrollTo";
+import useTheme from "../../hooks/useTheme";
 
 export default function Hero() {
   const heroRef = useRef(null);
   const backgroundRef = useRef(null);
+  const { theme } = useTheme();
+
+  // console.log("kep ", theme);
 
   // useEffect(() => {
   //   const hero = heroRef.current;
@@ -47,7 +51,7 @@ export default function Hero() {
   // }, []);
 
   return (
-    <section className={styles.hero} ref={heroRef}>
+    <section className={`${styles.hero} ${theme}`} ref={heroRef}>
       <div
         className={styles.background}
         ref={backgroundRef}
