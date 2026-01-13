@@ -13,6 +13,7 @@
   "dependencies": {
     "@responsive-image/react": "^1.1.5",
     "@tailwindcss/vite": "^4.1.14",
+    "axios": "^1.13.2",
     "babel-plugin-react-compiler": "^1.0.0",
     "html-react-parser": "^5.2.7",
     "motion": "^12.24.12",
