@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { Check, User, Clipboard, Users } from "react-feather";
 import styles from "./Services.module.scss";
 import Button from "../Atoms/Button";
@@ -54,6 +55,10 @@ function ServiceIcon({ icon }) {
   );
 }
 
+ServiceIcon.propTypes = {
+  icon: PropTypes.string,
+};
+
 function ServiceList({ list }) {
   return (
     <ul className={styles.list}>
@@ -66,6 +71,10 @@ function ServiceList({ list }) {
     </ul>
   );
 }
+
+ServiceList.propTypes = {
+  list: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
 
 const Services = () => {
   function handleCtaClick(e, serviceId) {

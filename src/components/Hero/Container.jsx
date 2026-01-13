@@ -16,7 +16,7 @@ const ContainerHero = () => {
           designed just for you! Our tailored workouts ensure efficient
           progress, and our meticulous progress tracking keeps you on the path
           to success. Ready to take the first step? Schedule your free
-          consultation now and let's achieve your fitness goals together.
+          consultation now and let&apos;s achieve your fitness goals together.
         </p>
       </div>
 
@@ -24,7 +24,7 @@ const ContainerHero = () => {
         <div className={styles.aboutContent}>
           <h2 id="about-carolina-almeida">About Me - Carol Almeida</h2>
           <p>
-            Hi, I'm Carol Almeida, a results-driven personal trainer with over
+            Hi, I&apos;m Carol Almeida, a results-driven personal trainer with over
             20 years of experience helping people transform their lives through
             fitness. I specialize in 1-on-1 personal training and customized
             fitness programs for individuals who value their time and want real,
@@ -37,8 +37,8 @@ const ContainerHero = () => {
             also move, feel, and live better.
           </p>
           <p>
-            I hold a Master's in Sport Training and a Bachelor's in Physical
-            Education, and I'm an ACE Certified Personal Trainer and Fitness
+            I hold a Master&apos;s in Sport Training and a Bachelor&apos;s in Physical
+            Education, and I&apos;m an ACE Certified Personal Trainer and Fitness
             Nutrition Specialist. With certifications in CrossFit Level 1 and
             years of experience coaching both in-person and online, I blend
             science with proven coaching strategies to deliver measurable,

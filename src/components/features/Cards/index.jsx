@@ -92,7 +92,7 @@ const Cards = () => {
         onMouseDown={handleDragStart}
         onMouseMove={handleDragMove}
         onMouseUp={handleDragEnd}
-        onMouseLeave={(e) => {
+        onMouseLeave={() => {
           setIsPaused(false);
           handleDragEnd();
         }}

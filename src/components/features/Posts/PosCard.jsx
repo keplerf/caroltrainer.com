@@ -1,30 +1,13 @@
-import { stripHtml, formatDate } from "../../../helpers/content";
+import PropTypes from "prop-types";
+import { stripHtml, formatDate, fetchPost } from "../../../helpers/content";
 import { getImageSrcSet } from "../../../helpers/getImageSrcSet";
 import { Link } from "react-router-dom";
 import parse from "html-react-parser";
 import Typography from "../../Atoms/Typography";
-import { fetchPost } from "../../../helpers/content";
 
 import styles from "./Posts.module.scss";
 
 export default function PostCard({ post }) {
-  const postPromises = new Map();
-
-  function getPostPromise(slug) {
-    if (!postPromises.has(slug)) {
-      postPromises.set(slug, fetchPost(slug));
-    }
-    return postPromises.get(slug);
-  }
-
-  async function fetchPost(slug) {
-    const response = await fetch(`${API_URL}?slug=${slug}&_embed`);
-    if (!response.ok) throw new Error("Failed to fetch post");
-    const data = await response.json();
-    if (data.length === 0) throw new Error("Post not found");
-    return data[0];
-  }
-
   const excerpt = stripHtml(post.excerpt.rendered).slice(0, 150) + "...";
 
   const handlePrefetch = () => {
@@ -71,3 +54,17 @@ export default function PostCard({ post }) {
     </article>
   );
 }
+
+PostCard.propTypes = {
+  post: PropTypes.shape({
+    slug: PropTypes.string,
+    date: PropTypes.string,
+    title: PropTypes.shape({
+      rendered: PropTypes.string,
+    }),
+    excerpt: PropTypes.shape({
+      rendered: PropTypes.string,
+    }),
+    _embedded: PropTypes.object,
+  }).isRequired,
+};

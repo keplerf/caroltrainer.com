@@ -1,4 +1,4 @@
-// import React, { useState } from "react";
+import PropTypes from "prop-types";
 import parse from "html-react-parser";
 import { ChevronDown } from "react-feather";
 import Typography from "../Atoms/Typography";
@@ -35,6 +35,11 @@ function FAQItem({ question, answer }) {
     </details>
   );
 }
+
+FAQItem.propTypes = {
+  question: PropTypes.string.isRequired,
+  answer: PropTypes.string.isRequired,
+};
 
 export default function FAQ() {
   return (

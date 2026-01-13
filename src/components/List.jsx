@@ -3,7 +3,7 @@ import axios from "axios";
 export default function ContactForm() {
   const [mailSent, setmailSent] = useState(false);
   const [error, setError] = useState(null);
-  const [status, setStatus] = useState({ state: "idle" });
+  const [status] = useState({ state: "idle" });
   const [formValue, setFormValue] = useState({
     firstName: "",
     lastName: "",
@@ -11,15 +11,11 @@ export default function ContactForm() {
     email: "",
     message: "",
   });
-  const [cityInput, setCityInput] = useState("dff");
-  const [list, setList] = useState([{ id: "Fortaleza", text: "Fortaleza" }]);
 
   async function handleSubmit(e) {
     e.preventDefault();
     // setStatus({ state: "submitting" });
 
-    const form = e.currentTarget;
-    const fd = form;
     axios({
       method: "POST",
       url: "https://www.caroltrainer.com/app/contact.php",

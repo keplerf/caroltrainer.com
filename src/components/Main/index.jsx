@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import styles from "./Main.module.css";
 import Inline from "../Inline";
 
@@ -14,6 +15,10 @@ const Main = ({ count }) => {
       </Inline>
     </>
   );
+};
+
+Main.propTypes = {
+  count: PropTypes.number,
 };
 
 export default Main;

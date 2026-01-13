@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
 import styles from "./ContactForm.module.scss";
 import { FormField } from "./FormField";
-import { useGetParamsFromURL } from "/src/hooks/useGetParamsFromURL";
+import { useGetParamsFromURL as getParamsFromURL } from "/src/hooks/useGetParamsFromURL";
 import Button from "../Atoms/Button";
 
 const SERVER_POST = "https://www.caroltrainer.com/app/contact.php";
@@ -32,7 +33,7 @@ export default function ContactForm() {
 
   useEffect(() => {
     function updateServiceFromURL() {
-      const serviceFromURL = useGetParamsFromURL("service");
+      const serviceFromURL = getParamsFromURL("service");
       const isValidService = SERVICE_OPTIONS.some(
         (opt) => opt.value === serviceFromURL
       );
@@ -156,8 +157,8 @@ export default function ContactForm() {
             </div>
             <h3>Thank you!</h3>
             <p>
-              Your message has been sent successfully. We'll be in touch within
-              24 hours.
+              Your message has been sent successfully. We&apos;ll be in touch
+              within 24 hours.
             </p>
           </div>
         </div>
@@ -177,8 +178,8 @@ export default function ContactForm() {
             Get In Touch
           </h2>
           <p className={styles.subtitle}>
-            Ready to start your fitness journey? Send us a message and we'll get
-            back to you shortly.
+            Ready to start your fitness journey? Send us a message and
+            we&apos;ll get back to you shortly.
           </p>
         </header>
 

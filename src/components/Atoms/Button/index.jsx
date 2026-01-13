@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import styles from "./Button.module.scss";
 import { motion } from "motion/react";
 
@@ -24,6 +25,15 @@ const Button = ({
       <span>{children}</span>
     </Component>
   );
+};
+
+Button.propTypes = {
+  appearance: PropTypes.string,
+  full: PropTypes.bool,
+  href: PropTypes.string,
+  children: PropTypes.node,
+  stiffness: PropTypes.number,
+  damping: PropTypes.number,
 };
 
 export default Button;

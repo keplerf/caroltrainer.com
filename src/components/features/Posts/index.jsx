@@ -1,6 +1,6 @@
+import PropTypes from "prop-types";
 import { use, Suspense } from "react";
 import { Link } from "react-router-dom";
-import Button from "../../Atoms/Button";
 import styles from "./Posts.module.scss";
 import { getImageSrcSet } from "../../../helpers/getImageSrcSet";
 
@@ -84,6 +84,21 @@ function PostCard({ post }) {
     </article>
   );
 }
+
+PostCard.propTypes = {
+  post: PropTypes.shape({
+    id: PropTypes.number,
+    slug: PropTypes.string,
+    date: PropTypes.string,
+    title: PropTypes.shape({
+      rendered: PropTypes.string,
+    }),
+    excerpt: PropTypes.shape({
+      rendered: PropTypes.string,
+    }),
+    _embedded: PropTypes.object,
+  }).isRequired,
+};
 
 function PostsContent() {
   const data = use(postsPromise);

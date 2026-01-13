@@ -1,4 +1,4 @@
-import { Suspense, lazy, useContext, useState } from "react";
+import { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import { ThemeContextProvider } from "./hooks/useTheme";
 import Hero from "./components/Hero";
