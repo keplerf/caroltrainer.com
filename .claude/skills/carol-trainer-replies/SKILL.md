@@ -128,7 +128,7 @@ Because Carol's clients are typically 40–60 year old professionals dealing wit
 ```
 Hey [Name]! Great question 😊 [Brief answer to their question].
 I'd love to tell you more about what a personal session actually looks like for you personally depending on your goals.
-Want to hop on a quick chat or come in for a free in-person consultation? 🏋️
+I do have a few consultation spots open this week — want to come in for a free in-person chat? 🏋️
 ```
 
 ---
@@ -162,28 +162,28 @@ help you figure out if it's the right fit. Want to set something up? 😊
 
 **Common objections and how to handle:**
 
-| Objection                                                   | Response Approach                                                                                                                                                                                                                                      |
-| ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| "I'm not sure I'm ready"                                    | Normalize it: "Most people feel that way at first — that's actually the perfect time to start." Redirect to free session.                                                                                                                              |
-| "It is too expensive."                                      | Add value first — share package pricing in context, then pivot to free session: "The best way to see if it makes sense is to try the free session first."                                                                                              |
-| "I need to think about it"                                  | Don't push. Offer the free session as a no-risk trial: "The free session is exactly for that — no commitment after. Would Tuesday or Thursday work better?"                                                                                            |
-| "I've tried before and it didn't stick"                     | Show empathy, highlight your approach: "I hear you — that's really common. My approach is all about making it feel sustainable, not overwhelming."                                                                                                     |
-| "I'm too busy"                                              | Normalize it for professionals: "Most of my clients are busy professionals too — sessions are structured and efficient. Morning, lunch, or evenings — what works best?"                                                                                |
-| "I'm not very fit / out of shape"                           | Reframe — this is the ideal client: "That's actually the perfect time to start. Most of my clients begin at exactly that stage."                                                                                                                       |
-| "I have shoulder pain / joint issues"                       | Lean in — this is Carol's niche: "That's something I work with a lot. The free session lets me assess your movement and find what helps, not aggravates it."                                                                                           |
-| "Where do you train?"                                       | Keep it simple and local, then keep conversation going: "A few gyms in downtown Vancouver. Which area are you usually around?"                                                                                                                         |
-| "What happens in the free session?"                         | Describe it clearly: goals talk, movement assessment, training plan discussion, and a chance to experience Carol's coaching style — no commitment after.                                                                                               |
-| "Do you do online training?"                                | Decline warmly: "I train in-person only — I find it makes a big difference to see your movement directly. Happy to find a time that works for your schedule in downtown Vancouver."                                                                    |
-| "Can I get a discount?"                                     | Reframe — the package IS the discount: "The more sessions you book upfront, the lower the per-session rate. The 12-session package gets you the best value at $100/session."                                                                           |
-| "Do you do nutrition coaching?"                             | Yes — introduce it naturally: "I do offer nutrition coaching as well, either alongside training or on its own. We can go over what makes sense for your goals at the consultation."                                                                    |
-| "Can my partner / friend join too?"                         | Yes — welcome it: "Absolutely, partner training works great — it keeps you both accountable. Let's talk about your goals together at the consultation and set it up from there."                                                                       |
-| "I have a serious medical condition"                        | Warm and careful: "Thank you for sharing that. I do work with people managing various conditions, and I'd want to make sure we do this safely. I'd ask that you get clearance from your doctor first, and then we can go from there."                  |
-| "Do you train people my age?" (younger)                     | Welcome them: "Absolutely — I work with clients of all ages. The approach just adapts to your goals and where you're at. What are you looking to work on?"                                                                                             |
-| "Is there a minimum number of sessions required per month?" | Be honest and results-focused: "For you to actually see results, I recommend at least one session per week — that's the minimum to build real progress. Less than that, and it's hard to create momentum."                                             |
-| Lead goes cold after the consultation                       | Gentle re-engagement: reference the consultation specifically — "Hey [Name], just following up from our session last week. Hope you've had some time to think it over. No pressure — just wanted to check if you had any questions I could help with." |
-| Existing client wants to renew                              | Make it easy: "So glad to hear it! Ready to keep the momentum going. Want to go with the same package or would you like to try the 12-session option to lock in the better rate?"                                                                      |
-| "What's your Instagram / website?"                          | Share directly: caroltrainer.com — no need to redirect to a call for this.                                                                                                                                                                             |
-| Lead cancels or reschedules                                 | Gracious and easy: "No worries at all! Let's find another time. What days/times work best for you this week or next?"                                                                                                                                  |
+| Objection                                                   | Response Approach                                                                                                                                                                                                                                                                      |
+| ----------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| "I'm not sure I'm ready"                                    | Normalize it: "Most people feel that way at first — that's actually the perfect time to start." Redirect to free session.                                                                                                                                                              |
+| "It is too expensive."                                      | Add value first — share package pricing in context, then pivot to free session: "The best way to see if it makes sense is to try the free session first."                                                                                                                              |
+| "I need to think about it"                                  | Don't push. Offer the free session as a no-risk trial, with a light nudge on timing: "The free session is exactly for that — no commitment after. I do have a couple of spots open this week — would Tuesday or Thursday work better?"                                                 |
+| "I've tried before and it didn't stick"                     | Show empathy, highlight your approach: "I hear you — that's really common. My approach is all about making it feel sustainable, not overwhelming."                                                                                                                                     |
+| "I'm too busy"                                              | Normalize it for professionals: "Most of my clients are busy professionals too — sessions are structured and efficient. Morning, lunch, or evenings — what works best?"                                                                                                                |
+| "I'm not very fit / out of shape"                           | Reframe — this is the ideal client: "That's actually the perfect time to start. Most of my clients begin at exactly that stage."                                                                                                                                                       |
+| "I have shoulder pain / joint issues"                       | Lean in — this is Carol's niche: "That's something I work with a lot. The free session lets me assess your movement and find what helps, not aggravates it."                                                                                                                           |
+| "Where do you train?"                                       | Keep it simple and local, then keep conversation going: "A few gyms in downtown Vancouver. Which area are you usually around?"                                                                                                                                                         |
+| "What happens in the free session?"                         | Describe it clearly: goals talk, movement assessment, training plan discussion, and a chance to experience Carol's coaching style — no commitment after.                                                                                                                               |
+| "Do you do online training?"                                | Decline warmly: "I train in-person only — I find it makes a big difference to see your movement directly. Happy to find a time that works for your schedule in downtown Vancouver."                                                                                                    |
+| "Can I get a discount?"                                     | Reframe — the package IS the discount: "The more sessions you book upfront, the lower the per-session rate. The 12-session package gets you the best value at $100/session."                                                                                                           |
+| "Do you do nutrition coaching?"                             | Yes — introduce it naturally: "I do offer nutrition coaching as well, either alongside training or on its own. We can go over what makes sense for your goals at the consultation."                                                                                                    |
+| "Can my partner / friend join too?"                         | Yes — welcome it: "Absolutely, partner training works great — it keeps you both accountable. Let's talk about your goals together at the consultation and set it up from there."                                                                                                       |
+| "I have a serious medical condition"                        | Warm and careful: "Thank you for sharing that. I do work with people managing various conditions, and I'd want to make sure we do this safely. I'd ask that you get clearance from your doctor first, and then we can go from there."                                                  |
+| "Do you train people my age?" (younger)                     | Welcome them: "Absolutely — I work with clients of all ages. The approach just adapts to your goals and where you're at. What are you looking to work on?"                                                                                                                             |
+| "Is there a minimum number of sessions required per month?" | Be honest and results-focused: "For you to actually see results, I recommend at least one session per week — that's the minimum to build real progress. Less than that, and it's hard to create momentum."                                                                             |
+| Lead goes cold after the consultation                       | Gentle re-engagement with a soft nudge: reference the consultation specifically — "Hey [Name], just following up from our session last week. Hope you've had some time to think it over — I do want to hold a spot for you if you're still interested. Any questions I can help with?" |
+| Existing client wants to renew                              | Make it easy: "So glad to hear it! Ready to keep the momentum going. Want to go with the same package or would you like to try the 12-session option to lock in the better rate?"                                                                                                      |
+| "What's your Instagram / website?"                          | Share directly: caroltrainer.com — no need to redirect to a call for this.                                                                                                                                                                                                             |
+| Lead cancels or reschedules                                 | Gracious and easy: "No worries at all! Let's find another time. What days/times work best for you this week or next?"                                                                                                                                                                  |
 
 **Pricing (use when directly asked):**
 
@@ -202,7 +202,7 @@ Sessions are 1 hour and I offer a few packages:
 
 Before committing to anything, I offer a free in-person consultation
 where we go over your goals and see if we're a good fit.
-Would you like to book that first? 😊
+I have a couple of spots open this week — want to grab one? 😊
 ```
 
 **Draft template (hesitation):**
@@ -210,7 +210,8 @@ Would you like to book that first? 😊
 ```
 That makes total sense, and honestly? A lot of my clients felt the same
 way before we started. The first step is always the hardest 💪
-What's holding you back the most right now? I'm happy to help you think it through.
+What's holding you back the most right now? I'm happy to help you think it through —
+and I do have a spot or two open coming up, so the timing could actually be perfect.
 ```
 
 ---
@@ -242,7 +243,8 @@ What's holding you back the most right now? I'm happy to help you think it throu
 - Guaranteed outcomes ("you will lose weight", "you'll get stronger in 2 weeks")
 - Any mention of other trainers or competing programs by name (gyms where Carol trains are fine to name, e.g. Evolve Strength Post)
 - Long paragraphs — break it up or shorten it
-- Pushy language ("you need to sign up now", "limited spots")
+- Explicitly pushy or aggressive language ("you NEED to sign up now", "only 1 spot left!")
+- ✅ Subtle availability cues are encouraged — e.g., "I do have a couple of spots open this week" or "my schedule fills up, so sooner is better" — these feel natural, not salesy
 
 ---
 
@@ -256,7 +258,8 @@ What's holding you back the most right now? I'm happy to help you think it throu
 Hey [Name]! Yes, I do — I'm based in Downtown Vancouver 😊
 I specialize in strength training and love helping people build
 confidence and feel strong in their bodies. What are your goals?
-I'd love to hear more about what you're looking for!
+I'd love to hear more — I have some availability coming up and would
+love to set up a free consultation if it's a good fit!
 ```
 
 ---
@@ -273,8 +276,8 @@ Love that you're interested! 😊 I offer a few packages:
 • 12 sessions – $100/session
 
 Before committing, I offer a free in-person consultation to go over
-your goals and see if we're a good fit. Want to start there?
-No commitment needed 🙌
+your goals and see if we're a good fit. I have a few spots open
+this week — want to grab one? No commitment needed 🙌
 ```
 
 ---
@@ -289,9 +292,9 @@ to hear about your goals — improving body composition and building a
 strong foundation for running, Hyrox, and basketball is something I
 work with often.
 
-I do currently have availability for new clients, and based on the days
+I do currently have limited availability for new clients, and based on the days
 and times you mentioned, it sounds like we could find a schedule that
-works well.
+works well — so the timing is actually good.
 
 I offer training packages rather than single sessions. My current options are:
 • 4 sessions – $120/session
@@ -336,9 +339,10 @@ Carol Almeida
 
 ```
 Hey [Name]! Hope you've been well 😊 Just wanted to check back in —
-no pressure at all, but if starting your training journey is still on your
-mind, I'm here whenever you're ready. Even a quick free consultation can
-help you figure out if it's the right fit. Want to set something up? 💪
+if starting your training journey is still on your mind, now might be
+a good time — my schedule does fill up and I have a spot or two open
+right now. Even a quick free consultation can help you figure out if
+it's the right fit. Want to grab one? 💪
 ```
 
 ---
@@ -352,8 +356,8 @@ Hey [Name]! I train in-person only — I find it makes a real difference
 to see your movement and adjust things in the moment.
 
 I'm based in Downtown Vancouver and work out of a few gyms nearby.
-If location could work for you, I'd love to set up a free consultation
-to go over your goals. Would that be an option? 😊
+If location could work for you, I do have some consultation spots open
+this week — I'd love to set one up. Would that work? 😊
 ```
 
 ---
@@ -368,7 +372,7 @@ or on its own, depending on what makes sense for your goals.
 
 The best way to figure out the right combination is to start with
 a free in-person consultation — we'd go over everything together.
-Would you like to set one up?
+I have a couple of spots open this week if you'd like to grab one?
 ```
 
 ---

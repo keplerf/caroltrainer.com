@@ -1,0 +1,26 @@
+{
+  "skill_name": "carol-trainer-replies",
+  "evals": [
+    {
+      "id": 0,
+      "eval_name": "new-inquiry",
+      "prompt": "Draft a reply to this WhatsApp message from a new lead named Marcus:\n\n\"hey i saw ur instagram 👋 do u do personal training in vancouver? i'm trying to get back in shape\"",
+      "expected_output": "A warm, casual reply that matches his tone (short, uses emoji), asks about his goals, and invites him to a free consultation. Should NOT include sign-off since it's a casual first WhatsApp message.",
+      "files": []
+    },
+    {
+      "id": 1,
+      "eval_name": "pricing-objection",
+      "prompt": "Draft a reply to this WhatsApp message from Sandra, a warm lead who just received Carol's pricing:\n\n\"Thanks Carol. Honestly that's a bit more than I was hoping to spend. I'll have to think about it.\"",
+      "expected_output": "Empathetic response that validates her concern without being pushy. Should reframe value (not just repeat prices), mention the free session as a no-risk option, and leave the door open warmly.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "eval_name": "cold-follow-up",
+      "prompt": "Carol needs to follow up with a lead named David. He messaged 2 weeks ago saying he was interested in personal training, they had a brief chat, but then he went silent and never booked the free consultation. Draft the follow-up message.",
+      "expected_output": "A brief, warm re-engagement message (3-5 lines). Should NOT feel guilty or pushy. Should reference getting started, mention availability, and offer the free consultation. Casual tone, emoji ok.",
+      "files": []
+    }
+  ]
+}

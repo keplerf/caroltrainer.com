@@ -6,7 +6,7 @@ import { getImageSrcSet } from "../../../helpers/getImageSrcSet";
 
 async function fetchPosts() {
   const response = await fetch(
-    `${import.meta.env.VITE_API_URL}?_embed&per_page=6`
+    `${import.meta.env.VITE_API_URL}?_embed&per_page=6&categories=7`
   );
   return response.json();
 }

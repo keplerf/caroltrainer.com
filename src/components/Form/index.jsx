@@ -10,6 +10,10 @@ const SERVER_POST = "https://www.caroltrainer.com/app/contact.php";
 const SERVICE_OPTIONS = [
   { value: "", label: "Select a service..." },
   { value: "1-on-1-personal-training", label: "1-on-1 Personal Training" },
+  {
+    value: "1-on-1-personal-training-Evolve",
+    label: "Evolve / 1-on-1 Personal Training",
+  },
   { value: "semi-private-training", label: "Semi-Private Training" },
   { value: "custom-fitness-programs", label: "Custom Fitness Programs" },
   { value: "other", label: "Other / Not sure" },
@@ -35,7 +39,7 @@ export default function ContactForm() {
     function updateServiceFromURL() {
       const serviceFromURL = getParamsFromURL("service");
       const isValidService = SERVICE_OPTIONS.some(
-        (opt) => opt.value === serviceFromURL
+        (opt) => opt.value === serviceFromURL,
       );
       if (serviceFromURL && isValidService) {
         setFormValue((prev) => ({ ...prev, service: serviceFromURL }));
