@@ -127,7 +127,13 @@ const Services = () => {
               <Button
                 href={`#contact?service=${service.id}`}
                 appearance={service.highlight ? "primary" : "secondary"}
-                onClick={(e) => handleCtaClick(e, service.id)}
+                onClick={(e) => {
+                  handleCtaClick(e, service.id);
+                  window.gtag?.("event", "cta_click", {
+                    event_category: "Services",
+                    event_label: service.title,
+                  });
+                }}
               >
                 Get Started
               </Button>

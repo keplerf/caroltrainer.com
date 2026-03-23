@@ -24,7 +24,15 @@ import { faq } from "../../content/faq";
 function FAQItem({ question, answer }) {
   return (
     <details className={styles.item}>
-      <summary className={styles.question}>
+      <summary
+        className={styles.question}
+        onClick={(e) => {
+          window.gtag?.("event", "cta_click", {
+            event_category: "FAQ",
+            event_label: question,
+          });
+        }}
+      >
         <Typography as="span">{question}</Typography>
         <ChevronDown size={20} className={styles.icon} aria-hidden="true" />
       </summary>

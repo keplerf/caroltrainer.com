@@ -77,7 +77,13 @@ export default function Hero() {
           <Button
             href="#contact"
             appearance="primary"
-            onClick={(e) => handleScrolTo(e, "contact")}
+            onClick={(e) => {
+              handleScrolTo(e, "contact");
+              window.gtag?.("event", "cta_click", {
+                event_category: "Hero",
+                event_label: "Book an intro",
+              });
+            }}
           >
             Book an intro
           </Button>
@@ -86,6 +92,12 @@ export default function Hero() {
             appearance="outline"
             href="sms:+17783029893?body=I'm%20interested%20in%20personal%20training"
             aria-label="Text Carolina Simoes about personal training anf fitnes coach"
+            onClick={() => {
+              window.gtag?.("event", "cta_click", {
+                event_category: "Hero",
+                event_label: "Phone / SMS",
+              });
+            }}
           >
             +1 778 302 9893
           </Button>

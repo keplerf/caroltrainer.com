@@ -125,7 +125,13 @@ const Cards = () => {
         <Button
           href="#contact"
           appearance="outline"
-          onClick={(e) => handleScrolTo(e, "contact")}
+          onClick={(e) => {
+            handleScrolTo(e, "contact");
+            window.gtag?.("event", "cta_click", {
+              event_category: "Card",
+              event_label: "Book an intro",
+            });
+          }}
         >
           Book an intro
         </Button>
