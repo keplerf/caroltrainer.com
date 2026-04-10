@@ -43,6 +43,7 @@
   font-family: "Oswald";
   src: local("Oswald-Bold"),
     url("/src/assets/fonts/Oswald/static/Oswald-Bold.ttf");
+  font-display: swap;
 }
 body {
   font-family: "Inter", sans-serif;
@@ -203,7 +204,6 @@ html {
   flex-direction: column;
   margin: 0;
   padding: 0;
-  text-shadow: #1e1e1e73 1px 1px 0px;
   text-shadow: #232222f5 1px 2px 4px;
   font-size: 18px;
   color: #dfdfdfeb;

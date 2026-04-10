@@ -15,29 +15,16 @@ const Button = ({
 }) => {
   const Component = href ? motion.a : motion.button;
 
-  const ButtonWrapper = (props) => {
-    return <div className={styles.wrapper}>{props.children}</div>;
-  };
-
-  const ButtonCustom = () => {
-    return (
-      <Component
-        // whileHover={{ scale: 1.02, y: -1 }}
-        whileTap={{ scale: 0.9, y: 1 }}
-        transition={{ type: "spring", stiffness, damping, duration: 10 }}
-        href={href}
-        className={`${styles.btn} ${styles[appearance]} ${full ? styles.full : ""} ${dark ? styles.dark : ""}`}
-        {...props}
-      >
-        <span>{children}</span>
-      </Component>
-    );
-  };
-
   return (
-    <>
-      <ButtonCustom />
-    </>
+    <Component
+      whileTap={{ scale: 0.9, y: 1 }}
+      transition={{ type: "spring", stiffness, damping, duration: 10 }}
+      href={href}
+      className={`${styles.btn} ${styles[appearance]} ${full ? styles.full : ""} ${dark ? styles.dark : ""}`}
+      {...props}
+    >
+      <span>{children}</span>
+    </Component>
   );
 };
 

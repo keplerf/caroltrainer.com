@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <!-- Google tag (gtag.js) -->
@@ -109,7 +109,7 @@
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        --nav-heigh: 70px;
+        --nav-height: 70px;
       }
       html {
         scroll-padding-top: 7rem;
@@ -195,10 +195,10 @@
         display: flex;
         align-items: center;
         gap: 5px;
-        font-size: 11px;
+        font-size: 0.6rem;
         font-weight: 300;
-        opacity: 0.7;
-        color: #ffffff;
+        opacity: 0.5;
+        color: #d9d9d9;
       }
       .container {
         padding: 2rem;
@@ -214,7 +214,8 @@
       }
       @font-face {
         font-family: "Oswald";
-        src: local("Oswald-Bold"),
+        src:
+          local("Oswald-Bold"),
           url("/src/assets/fonts/Oswald/static/Oswald-Bold.ttf");
         font-display: swap;
       }
@@ -235,11 +236,11 @@
       }
       .nav .nav-overlay-links {
         display: none;
-
-        @media screen and (min-width: 600px) {
-          display: inline-block;
-          width: auto;
+      }
+      @media screen and (min-width: 600px) {
+        .nav .nav-overlay-links {
           display: flex;
+          width: auto;
           gap: 15px;
         }
       }
@@ -248,11 +249,12 @@
         z-index: 90;
         position: relative;
         margin: 0;
-        height: calc(100vh - var(--nav-heigh));
+        height: calc(100vh - var(--nav-height));
         padding: 35px;
         width: 100%;
-
-        @media screen and (min-width: 600px) {
+      }
+      @media screen and (min-width: 600px) {
+        .nav.active .nav-overlay-links {
           position: absolute;
           top: 0;
           right: 0;
@@ -273,8 +275,9 @@
         font-size: 23px;
         position: relative;
         transition: all 0.5s;
-
-        @media screen and (min-width: 600px) {
+      }
+      @media screen and (min-width: 600px) {
+        .nav-overlay-links a {
           font-size: 15px;
         }
       }
@@ -304,8 +307,8 @@
         opacity: 1;
       }
 
-      .nav-overlay-menutriger {
-        @media screen and (min-width: 600px) {
+      @media screen and (min-width: 600px) {
+        .nav-overlay-menutriger {
           display: none;
         }
       }
@@ -315,8 +318,9 @@
         top: 20px;
         right: 20px;
         z-index: 85;
-
-        @media screen and (min-width: 600px) {
+      }
+      @media screen and (min-width: 600px) {
+        .nav.active .nav-overlay-menutriger {
           display: none;
         }
       }
@@ -350,6 +354,7 @@
         color: white;
         font-weight: bold;
         background: var(--_bg);
+        -webkit-backdrop-filter: blur(10px);
         backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 255, 255, 0.1);
         z-index: 51;
@@ -357,10 +362,9 @@
         left: -1px;
         top: -1px;
         transition: background-color 1s;
-
-        &.sticking {
-          --_bg: rgba(24, 23, 23, 0.735);
-        }
+      }
+      .nav.sticking {
+        --_bg: rgba(24, 23, 23, 0.735);
       }
 
       .nav-container {
@@ -421,7 +425,8 @@
               height: 18px; /* control the size */
               aspect-ratio: 2/3;
               margin-right: 5px;
-              mask: conic-gradient(
+              mask:
+                conic-gradient(
                     from -30deg at bottom,
                     #0000,
                     #000 1deg 59deg,
@@ -456,21 +461,12 @@
         const nav = document.querySelector(".nav");
         const navlinks = document.querySelectorAll(".nav-overlay-links a");
         const navtrigger = document.querySelector(
-          ".nav-overlay-menutriger button"
+          ".nav-overlay-menutriger button",
         );
         const scrollWatcher = document.createElement("div");
 
-        navlinks.forEach((item) => {
-          let content = [];
-          for (var i = 0; i < item.innerHTML.length; i++) {
-            const newcontent = item.innerHTML.slice(i, i + 1);
-            content.push(`<span className='fdf'>${newcontent}</span>`);
-          }
-        });
-
         navtrigger.addEventListener("click", function () {
           nav.classList.toggle("active");
-          navtrigger.innerHTML("navtrig");
         });
 
         navlinks.forEach((navlink) => {
@@ -485,12 +481,11 @@
           (entries) => {
             nav.classList.toggle("sticking", !entries[0].isIntersecting);
           },
-          { rootMargin: "100px 0px 0px 0px" }
+          { rootMargin: "100px 0px 0px 0px" },
         );
         navObserver.observe(scrollWatcher);
       });
     </script>
     <script type="module" src="/src/main.jsx"></script>
-
   </body>
 </html>

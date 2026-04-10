@@ -142,7 +142,7 @@
 .hero {
   display: flex;
   padding: 0 1.5rem;
-  min-height: clamp(600px, 70vh, 50vh);
+  min-height: clamp(650px, 600px, 100vh);
   left: 0px;
   top: 0px;
   position: relative;
@@ -153,6 +153,7 @@
 
   @media screen and (min-width: 600px) {
     padding: 0 3rem;
+    // min-height: clamp(600px, 70vh, 50vh);
   }
 }
 
@@ -178,8 +179,8 @@
   background: #ffcbab;
   padding: 15px;
   font-size: 12px;
-  max-width: 30vw;
-  aspect-ratio: 1;
+  max-width: 40vw;
+  aspect-ratio: 1/1;
   display: flex;
   align-items: center;
   position: absolute;
@@ -346,27 +347,19 @@
 }
 
 .heroImage {
-  width: 50%;
+  width: 60%;
   position: absolute;
   bottom: 0;
   right: 0%;
   aspect-ratio: 1/1.7;
   z-index: 20;
-
-  & > * {
-    display: flex;
-  }
-
-  & * {
-    margin: 0 auto;
-    justify-content: center;
-    height: 100%;
-    object-fit: cover;
-    width: 100%;
-  }
+  display: grid;
+  align-items: end;
+  right: -12%;
 
   @media screen and (min-width: 600px) {
     right: -5%;
+    width: 50%;
     z-index: 90;
     width: clamp(25rem, 28vw, 29rem);
     bottom: 0;

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import styles from "./ContactForm.module.scss";
 import { FormField } from "./FormField";
@@ -30,6 +30,7 @@ const INITIAL_FORM_STATE = {
 
 export default function ContactForm() {
   const [status, setStatus] = useState({ state: "idle" });
+  const successRef = useRef(null);
   const [errors, setErrors] = useState([]);
   const [honeypotStatus, setHoneypotStatus] = useState(false);
   const [touched, setTouched] = useState({});
@@ -50,6 +51,12 @@ export default function ContactForm() {
     window.addEventListener("hashchange", updateServiceFromURL);
     return () => window.removeEventListener("hashchange", updateServiceFromURL);
   }, []);
+
+  useEffect(() => {
+    if (status.state === "submitted") {
+      successRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [status.state]);
 
   function getFieldError(fieldName) {
     return errors.find((e) => e.field === fieldName)?.message;
@@ -145,6 +152,7 @@ export default function ContactForm() {
             className={styles.successMessage}
             role="status"
             aria-live="polite"
+            ref={successRef}
           >
             <div className={styles.successIcon} aria-hidden="true">
               <svg
